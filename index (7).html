@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garda a Tavola Km – Scopri i sapori autentici del territorio gardesano</title>
+<meta name="description" content="Scopri produttori locali, specialità gastronomiche ed esperienze nell'entroterra gardesano: Lazise, Bardolino, Cavaion Veronese, Affi, Caprino Veronese, Bussolengo.">
+<meta name="theme-color" content="#263D2C">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Garda a Tavola Km">
+<meta property="og:description" content="Scopri i sapori autentici del territorio gardesano.">
+<meta property="og:locale" content="it_IT">
+<!-- Dopo la pubblicazione aggiungere: og:url e og:image con indirizzi reali (vedi README) -->
+
+<!-- Favicon semplice: ramo d'ulivo stilizzato -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23263D2C'/%3E%3Cpath d='M16 48 C26 36 34 28 48 14' stroke='%23F8F0DD' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='26' cy='34' rx='8' ry='3.5' transform='rotate(-35 26 34)' fill='%2387977A'/%3E%3Cellipse cx='38' cy='24' rx='8' ry='3.5' transform='rotate(-35 38 24)' fill='%2387977A'/%3E%3Ccircle cx='20' cy='44' r='3.2' fill='%23B76545'/%3E%3C/svg%3E">
+
+<style>
+/* =========================================================
+   1. VARIABILI E RESET
+   ========================================================= */
+:root{
+  --olive:#263D2C;
+  --sage:#87977A;
+  --cream:#F8F0DD;
+  --warm:#FFFDF8;
+  --terra:#B76545;
+  --terra-dark:#9A4F32;   /* contrasto migliore per testo su fondo chiaro */
+  --text:#22302A;
+  --muted:#5B6A5F;
+  --line:#E6DCC3;
+  --radius:18px;
+  --shadow:0 6px 22px rgba(38,61,44,.10);
+  --font-serif:Georgia,"Times New Roman",serif;
+  --font-sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--warm);line-height:1.6;font-size:17px;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--terra-dark)}
+h1,h2,h3{font-family:var(--font-serif);color:var(--olive);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2rem,6vw,3.4rem)}
+h2{font-size:clamp(1.6rem,4vw,2.3rem)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--olive);color:#fff;padding:10px 16px;border-radius:8px;z-index:200}
+.skip:focus{left:8px}
+.container{width:min(1160px,100% - 32px);margin-inline:auto}
+section{padding:64px 0}
+.section-head{max-width:680px;margin-bottom:28px}
+.section-head p{color:var(--muted)}
+.bg-cream{background:var(--cream)}
+
+/* =========================================================
+   2. PULSANTI E ELEMENTI COMUNI
+   ========================================================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;border:2px solid transparent;font:600 1rem var(--font-sans);cursor:pointer;text-decoration:none;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--terra-dark);color:#fff}
+.btn-primary:hover{background:var(--terra)}
+.btn-secondary{background:transparent;color:var(--olive);border-color:var(--olive)}
+.btn-secondary:hover{background:var(--olive);color:#fff}
+.btn-light{background:var(--cream);color:var(--olive)}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.btn-ghost-light:hover{background:#fff;color:var(--olive)}
+.btn-sm{min-height:44px;padding:8px 16px;font-size:.95rem}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:var(--cream);color:var(--olive);border:1px solid var(--line)}
+.badge-premium{background:var(--terra-dark);color:#fff;border-color:var(--terra-dark)}
+.badge-demo{background:#fff;color:var(--muted);border:1px dashed var(--sage)}
+.badge-verified{background:var(--olive);color:#fff;border-color:var(--olive)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.notice{background:var(--cream);border-left:4px solid var(--terra);padding:12px 16px;border-radius:10px;font-size:.95rem;color:var(--text)}
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+header.site{position:sticky;top:0;z-index:100;background:var(--olive);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.header-row{display:flex;align-items:center;gap:12px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:700 1.2rem var(--font-serif);margin-right:auto}
+.brand svg{width:34px;height:34px;flex:none}
+.brand small{display:block;font:500 .7rem var(--font-sans);opacity:.8;letter-spacing:.08em;text-transform:uppercase}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+nav.main a{display:block;color:#fff;text-decoration:none;padding:10px 12px;border-radius:999px;font-size:.95rem}
+nav.main a:hover{background:rgba(255,255,255,.14)}
+.lang-select{min-height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.5);background:var(--olive);color:#fff;padding:0 12px;font:600 .9rem var(--font-sans)}
+.menu-toggle{display:none;min-width:48px;min-height:48px;background:transparent;border:1px solid rgba(255,255,255,.5);border-radius:12px;color:#fff;cursor:pointer}
+.menu-toggle svg{width:24px;height:24px}
+@media (max-width:900px){
+  .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  nav.main{position:absolute;left:0;right:0;top:100%;background:var(--olive);display:none;padding:8px 16px 16px;border-top:1px solid rgba(255,255,255,.15)}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column}
+  nav.main a{padding:14px 12px}
+}
+
+/* =========================================================
+   4. HERO
+   ========================================================= */
+.hero{position:relative;color:#fff;padding:0;min-height:min(78vh,640px);display:flex;align-items:flex-end;background:var(--olive)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,61,44,.15) 0%,rgba(38,61,44,.82) 100%)}
+.hero .container{position:relative;z-index:2;padding:96px 0 56px}
+.hero h1{color:#fff;max-width:760px}
+.hero p.lead{font-size:1.2rem;max-width:620px;opacity:.95}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero-note{font-size:.8rem;opacity:.8;margin-top:18px}
+/* Hero su smartphone: niente vuoto in alto, testo vicino all'header */
+@media (max-width:700px){
+  .hero{min-height:auto;align-items:flex-start}
+  .hero::after{background:linear-gradient(180deg,rgba(38,61,44,.55) 0%,rgba(38,61,44,.85) 100%)}
+  .hero .container{padding:36px 0 32px}
+  .hero p.lead{font-size:1.05rem}
+  .hero-actions .btn{flex:1 1 100%}
+}
+
+/* =========================================================
+   5. CATEGORIE
+   ========================================================= */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.cat-card{position:relative;display:flex;align-items:flex-end;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;border:0;padding:0;cursor:pointer;color:#fff;text-align:left;box-shadow:var(--shadow);background:var(--olive)}
+.cat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cat-card:hover img{transform:scale(1.05)}
+.cat-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(38,61,44,.9))}
+.cat-card span{position:relative;z-index:2;padding:16px;font:700 1.1rem var(--font-serif);line-height:1.25}
+
+/* =========================================================
+   6. CARD PRODUTTORI E CATALOGO
+   ========================================================= */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card-img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--cream)}
+.card-body{padding:18px;display:flex;flex-direction:column;flex:1}
+.card-meta{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.card-body p{color:var(--text);font-size:.97rem}
+.card-body .btn{margin-top:auto;align-self:flex-start}
+
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:24px}
+.filters label{display:block;font-size:.85rem;font-weight:600;color:var(--olive);margin-bottom:4px}
+.filters input,.filters select{width:100%;min-height:48px;border:1px solid var(--sage);border-radius:12px;padding:0 12px;font:1rem var(--font-sans);background:var(--warm);color:var(--text)}
+@media (max-width:900px){.filters{grid-template-columns:1fr 1fr}.filters .f-search{grid-column:1/-1}.filters .btn{grid-column:1/-1}}
+@media (max-width:480px){.filters{grid-template-columns:1fr}}
+.result-count{color:var(--muted);margin-bottom:14px;font-size:.95rem}
+.empty{text-align:center;padding:40px 20px;background:#fff;border:1px dashed var(--sage);border-radius:var(--radius)}
+
+/* =========================================================
+   7. ESPERIENZE
+   ========================================================= */
+.exp-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.exp-card .ico{width:46px;height:46px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:1.4rem;margin-bottom:6px}
+.exp-card .btn{margin-top:10px;align-self:flex-start}
+
+/* =========================================================
+   8. AI CONCIERGE
+   ========================================================= */
+.ai{background:var(--olive);color:#fff}
+.ai h2{color:#fff}
+.ai .section-head p{color:rgba(255,255,255,.88)}
+.ai-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.ai-status{margin-top:20px;font-size:.92rem;background:rgba(255,255,255,.1);padding:12px 16px;border-radius:12px;max-width:640px}
+
+/* =========================================================
+   9. PARTNER E PREMIUM
+   ========================================================= */
+.partner{background:var(--sage);color:var(--olive)}
+.partner-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.partner-box h2{margin-bottom:.3em}
+.partner-box p{max-width:640px;margin:0;color:#1B2B20}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:860px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.plan.premium{border:2px solid var(--terra);position:relative}
+.plan .price{font:700 2rem var(--font-serif);color:var(--olive);margin:6px 0 14px}
+.plan .price small{font:500 .9rem var(--font-sans);color:var(--muted)}
+.plan ul{padding-left:20px;margin:0}
+.plan li{margin-bottom:6px}
+
+/* =========================================================
+   10. FOOTER
+   ========================================================= */
+footer.site{background:#1B2B20;color:#E8E2CF;padding:48px 0 28px;font-size:.95rem}
+footer.site h3{color:#fff;font-size:1.05rem}
+footer.site a{color:#F0D9B5}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.foot-links{list-style:none;padding:0;margin:0}
+.foot-links li{margin-bottom:8px}
+.link-btn{background:none;border:0;padding:0;font:inherit;color:#F0D9B5;text-decoration:underline;cursor:pointer;min-height:32px}
+.copy{border-top:1px solid rgba(255,255,255,.15);margin-top:30px;padding-top:18px;font-size:.85rem;opacity:.85}
+
+/* =========================================================
+   11. MODAL E TOAST
+   ========================================================= */
+.modal-backdrop{position:fixed;inset:0;background:rgba(20,30,24,.65);z-index:300;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:24px 12px}
+.modal-backdrop.open{display:flex}
+.modal{position:relative;background:var(--warm);border-radius:22px;width:min(760px,100%);margin:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);overflow:hidden}
+.modal-img{width:100%;aspect-ratio:16/8;object-fit:cover}
+.modal-content{padding:24px}
+.modal-close{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:var(--olive);font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:2}
+.modal h2{font-size:1.7rem}
+.modal h3{font-size:1.05rem;margin-top:1.2em}
+.modal ul{padding-left:20px;margin:0 0 1em}
+.modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.form-field{margin-bottom:12px}
+.form-field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:4px}
+.form-field input,.form-field textarea{width:100%;min-height:46px;border:1px solid var(--sage);border-radius:12px;padding:10px 12px;font:1rem var(--font-sans)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(30px);background:var(--olive);color:#fff;padding:14px 20px;border-radius:14px;max-width:min(520px,calc(100% - 28px));z-index:400;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 8px 28px rgba(0,0,0,.35);font-size:.95rem}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{background:#8A2E1E}
+
+/* =========================================================
+   12. RIDUZIONE ANIMAZIONI
+   ========================================================= */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main" data-i18n="skip">Vai al contenuto</a>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+<header class="site">
+  <div class="container header-row">
+    <a class="brand" href="#top" aria-label="Garda a Tavola Km">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#F8F0DD"/><path d="M14 48 C25 36 35 27 50 13" stroke="#263D2C" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="25" cy="35" rx="8" ry="3.5" transform="rotate(-35 25 35)" fill="#87977A"/><ellipse cx="37" cy="25" rx="8" ry="3.5" transform="rotate(-35 37 25)" fill="#87977A"/><ellipse cx="44" cy="19" rx="6" ry="2.8" transform="rotate(-35 44 19)" fill="#87977A"/><circle cx="19" cy="44" r="3.4" fill="#B76545"/><circle cx="31" cy="39" r="3" fill="#B76545"/></svg>
+      <span>Garda a Tavola<small>Km</small></span>
+    </a>
+
+    <nav class="main" id="mainNav" aria-label="Menu principale" data-i18n-aria="nav_label">
+      <ul>
+        <li><a href="#categorie" data-i18n="nav_categories">Categorie</a></li>
+        <li><a href="#produttori" data-i18n="nav_producers">Produttori</a></li>
+        <li><a href="#esperienze" data-i18n="nav_experiences">Esperienze</a></li>
+        <li><a href="#concierge" data-i18n="nav_ai">AI Concierge</a></li>
+        <li><a href="#premium" data-i18n="nav_premium">Per i produttori</a></li>
+      </ul>
+    </nav>
+
+    <label class="sr-only" for="langSelect" data-i18n="lang_label">Lingua</label>
+    <select id="langSelect" class="lang-select">
+      <option value="it">IT</option>
+      <option value="en">EN</option>
+      <option value="de">DE</option>
+    </select>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Apri il menu" data-i18n-aria="menu_open">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <img class="hero-bg" id="heroImg" alt="" data-i18n-alt="hero_alt">
+  <div class="container">
+    <h1 id="heroTitle" data-i18n="hero_title">Il Garda più autentico, un sapore alla volta.</h1>
+    <p class="lead" data-i18n="hero_sub">Scopri i produttori locali, visita le aziende e trova le specialità del nostro territorio.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#produttori" data-i18n="hero_cta1">Scopri i produttori</a>
+      <button class="btn btn-ghost-light" type="button" data-ai-open data-i18n="hero_cta2">Chiedi al Garda AI</button>
+    </div>
+    <p class="hero-note" data-i18n="hero_note">Illustrazione dimostrativa. Le fotografie reali verranno aggiunte dopo la verifica dei diritti d'uso.</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     CATEGORIE
+     ========================================================= -->
+<section id="categorie" aria-labelledby="catTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="catTitle" data-i18n="cats_title">Che cosa stai cercando?</h2>
+      <p data-i18n="cats_sub">Scegli una categoria per vedere i produttori del territorio.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PRODUTTORI IN EVIDENZA
+     ========================================================= -->
+<section class="bg-cream" id="evidenza" aria-labelledby="featTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="featTitle" data-i18n="feat_title">Produttori in evidenza</h2>
+      <p data-i18n="feat_sub">Una selezione dal catalogo.</p>
+    </div>
+    <p class="notice" data-i18n="demo_notice" style="margin-bottom:20px">I produttori mostrati sono schede dimostrative di esempio: non rappresentano aziende reali né informazioni verificate.</p>
+    <div class="grid" id="featGrid"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CATALOGO
+     ========================================================= -->
+<section id="produttori" aria-labelledby="prodTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="prodTitle" data-i18n="cat_title">Catalogo produttori</h2>
+      <p data-i18n="cat_sub">Cerca per nome, categoria o località.</p>
+    </div>
+
+    <form class="filters" id="filters" role="search" aria-label="Filtri del catalogo" data-i18n-aria="filters_label" onsubmit="return false">
+      <div class="f-search">
+        <label for="fSearch" data-i18n="f_search">Cerca</label>
+        <input type="search" id="fSearch" autocomplete="off" placeholder="Nome, prodotto…" data-i18n-ph="f_search_ph">
+      </div>
+      <div>
+        <label for="fCategory" data-i18n="f_category">Categoria</label>
+        <select id="fCategory"></select>
+      </div>
+      <div>
+        <label for="fMunicipality" data-i18n="f_municipality">Località</label>
+        <select id="fMunicipality"></select>
+      </div>
+      <div>
+        <label for="fSort" data-i18n="f_sort">Ordina</label>
+        <select id="fSort">
+          <option value="az" data-i18n="sort_az">Nome A–Z</option>
+          <option value="za" data-i18n="sort_za">Nome Z–A</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-secondary" id="fReset" data-i18n="f_reset">Azzera filtri</button>
+    </form>
+
+    <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+    <div class="grid" id="catalogGrid"></div>
+    <div class="empty" id="emptyState" hidden>
+      <h3 data-i18n="empty_title">Nessun risultato</h3>
+      <p data-i18n="empty_text">Prova a cambiare i filtri o a cercare con altre parole.</p>
+      <button type="button" class="btn btn-secondary" id="emptyReset" data-i18n="f_reset">Azzera filtri</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     ESPERIENZE
+     ========================================================= -->
+<section class="bg-cream" id="esperienze" aria-labelledby="expTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="expTitle" data-i18n="exp_title">Esperienze nel territorio</h2>
+      <p data-i18n="exp_sub">Idee per vivere il Garda attraverso i suoi sapori.</p>
+    </div>
+    <p class="notice" data-i18n="exp_notice" style="margin-bottom:20px">Le esperienze qui sotto sono proposte dimostrative: al momento non sono prenotabili.</p>
+    <div class="grid" id="expGrid"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     AI CONCIERGE
+     ========================================================= -->
+<section class="ai" id="concierge" aria-labelledby="aiTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="aiTitle" data-i18n="ai_title">Che cosa vuoi scoprire oggi?</h2>
+      <p data-i18n="ai_text">Raccontaci cosa ti piace e ti aiuteremo a trovare produttori, sapori ed esperienze nell'entroterra gardesano.</p>
+    </div>
+    <div class="ai-buttons" id="aiButtons">
+      <button type="button" class="btn btn-light" data-ai-q="ai_q1" data-i18n="ai_q1">Cerco olio del Garda</button>
+      <button type="button" class="btn btn-light" data-ai-q="ai_q2" data-i18n="ai_q2">Vorrei scoprire formaggi locali</button>
+      <button type="button" class="btn btn-light" data-ai-q="ai_q3" data-i18n="ai_q3">Cerco una degustazione</button>
+      <button type="button" class="btn btn-light" data-ai-q="ai_q4" data-i18n="ai_q4">Organizza un itinerario del gusto</button>
+    </div>
+    <p class="ai-status" id="aiStatus" role="status"></p>
+  </div>
+</section>
+
+<!-- =========================================================
+     SEI UN PRODUTTORE?
+     ========================================================= -->
+<section class="partner" id="partner" aria-labelledby="partnerTitle">
+  <div class="container partner-box">
+    <div>
+      <h2 id="partnerTitle" data-i18n="partner_title">Sei un produttore locale?</h2>
+      <p data-i18n="partner_text">Fai conoscere i tuoi prodotti a chi visita il territorio gardesano. Presenta la tua azienda, racconta le tue specialità e ricevi contatti da nuovi potenziali clienti.</p>
+    </div>
+    <button type="button" class="btn btn-primary" id="partnerBtn" data-i18n="partner_btn">Diventa partner</button>
+  </div>
+</section>
+
+<!-- =========================================================
+     PIANI BASE / PREMIUM
+     ========================================================= -->
+<section id="premium" aria-labelledby="premTitle">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="premTitle" data-i18n="prem_title">Due livelli di presenza</h2>
+      <p data-i18n="prem_sub">Una proposta commerciale per le aziende del territorio.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>BASE</h3>
+        <div class="price" data-i18n="plan_base_price">Gratuito</div>
+        <ul>
+          <li data-i18n="base_1">Profilo essenziale</li>
+          <li data-i18n="base_2">Categoria e località</li>
+          <li data-i18n="base_3">Informazioni principali</li>
+        </ul>
+      </article>
+      <article class="plan premium">
+        <h3>PREMIUM</h3>
+        <div class="price"><span id="premPrice">€240</span> <small data-i18n="per_year">/ anno</small></div>
+        <ul>
+          <li data-i18n="prem_1">Profilo completo</li>
+          <li data-i18n="prem_2">Galleria fotografica</li>
+          <li data-i18n="prem_3">Presentazione dei prodotti</li>
+          <li data-i18n="prem_4">Esperienze</li>
+          <li data-i18n="prem_5">Link di contatto</li>
+          <li data-i18n="prem_6">Maggiore visibilità nelle sezioni pertinenti</li>
+          <li data-i18n="prem_7">Promozioni in evidenza</li>
+        </ul>
+      </article>
+    </div>
+    <p class="notice" style="margin-top:20px;max-width:860px" data-i18n="prem_notice">Prezzo dimostrativo: si tratta di una proposta commerciale e la sottoscrizione non è attiva in questa prima versione. Non sono previsti pagamenti online.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="site" id="contatti">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h3>Garda a Tavola Km</h3>
+        <p data-i18n="foot_about">Progetto dedicato alla scoperta di produttori, specialità ed esperienze gastronomiche dell'entroterra gardesano.</p>
+        <ul class="foot-links" id="socialList"></ul>
+      </div>
+      <div>
+        <h3 data-i18n="foot_contacts">Contatti</h3>
+        <div id="footContacts"></div>
+      </div>
+      <div>
+        <h3 data-i18n="foot_producers">Per i produttori</h3>
+        <p data-i18n="foot_producers_text">Vuoi comparire nel catalogo? Scopri i livelli Base e Premium.</p>
+        <a href="#premium" data-i18n="foot_producers_link">Vai ai piani</a>
+      </div>
+      <div>
+        <h3 data-i18n="foot_legal">Informazioni legali</h3>
+        <ul class="foot-links">
+          <li><button type="button" class="link-btn" data-legal="privacy" data-i18n="privacy">Informativa privacy</button></li>
+          <li><button type="button" class="link-btn" data-legal="cookie" data-i18n="cookie">Cookie policy</button></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy"><span id="year"></span> Garda a Tavola Km — <span data-i18n="foot_demo">Versione dimostrativa: i dati dei produttori sono esempi.</span></p>
+  </div>
+</footer>
+
+<!-- Modal generico (scheda produttore, partner, privacy…) -->
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Chiudi" data-i18n-aria="close">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- =========================================================
+     MXCHAT ANYWHERE – PUNTO DI INTEGRAZIONE
+     Incolla qui sotto il codice ufficiale fornito dall'installazione
+     MxChat (di norma uno o più tag script), poi imposta
+     mxchatEnabled: true in CONFIG. Non aggiungere chiavi private.
+     ========================================================= -->
+<!-- INIZIO CODICE MXCHAT -->
+
+<!-- FINE CODICE MXCHAT -->
+
+<script>
+/* =========================================================
+   CONFIGURAZIONE
+   ========================================================= */
+const CONFIG = {
+  siteName: "Garda a Tavola",
+  defaultLanguage: "it",
+
+  // --- MxChat Anywhere ---
+  mxchatEnabled: false,   // true solo dopo aver incollato/configurato lo script ufficiale
+  mxchatScript: "",       // OPZIONALE: URL dello script ufficiale, se MxChat lo fornisce come file esterno
+
+  // --- Contatti (lasciare vuoto finché non sono reali) ---
+  partnerEmail: "",       // es. "info@tuodominio.it": se vuoto il pulsante mostra un modulo dimostrativo non operativo
+  contactEmail: "",
+  contactPhone: "",
+
+  // --- Social: aggiungere solo URL reali, es. { label: "Instagram", url: "https://..." } ---
+  social: [],
+
+  // --- Prezzi (proposta commerciale dimostrativa) ---
+  premiumPrice: "€240"
+};
+
+/* =========================================================
+   TRADUZIONI (IT / EN / DE)
+   Le chiavi mancanti in una lingua usano l'italiano.
+   ========================================================= */
+const I18N = {
+  it: {
+    skip:"Vai al contenuto", nav_label:"Menu principale", nav_categories:"Categorie", nav_producers:"Produttori", nav_experiences:"Esperienze", nav_ai:"AI Concierge", nav_premium:"Per i produttori",
+    lang_label:"Lingua", menu_open:"Apri il menu", menu_close:"Chiudi il menu", close:"Chiudi",
+    hero_title:"Il Garda più autentico, un sapore alla volta.", hero_sub:"Scopri i produttori locali, visita le aziende e trova le specialità del nostro territorio.",
+    hero_cta1:"Scopri i produttori", hero_cta2:"Chiedi al Garda AI", hero_alt:"Illustrazione stilizzata di colline, vigneti e lago", hero_note:"Illustrazione dimostrativa. Le fotografie reali verranno aggiunte dopo la verifica dei diritti d'uso.",
+    cats_title:"Che cosa stai cercando?", cats_sub:"Scegli una categoria per vedere i produttori del territorio.",
+    cat_wine:"Vino e cantine", cat_oil:"Olio extravergine", cat_cheese:"Formaggi", cat_honey:"Miele e prodotti dell'alveare", cat_charcuterie:"Salumi e specialità gastronomiche", cat_craft:"Prodotti artigianali", cat_experiences:"Degustazioni ed esperienze",
+    feat_title:"Produttori in evidenza", feat_sub:"Una selezione dal catalogo.", demo_notice:"I produttori mostrati sono schede dimostrative di esempio: non rappresentano aziende reali né informazioni verificate.",
+    cat_title:"Catalogo produttori", cat_sub:"Cerca per nome, categoria o località.", filters_label:"Filtri del catalogo",
+    f_search:"Cerca", f_search_ph:"Nome, prodotto…", f_category:"Categoria", f_municipality:"Località", f_sort:"Ordina", sort_az:"Nome A–Z", sort_za:"Nome Z–A", f_reset:"Azzera filtri", all_categories:"Tutte le categorie", all_municipalities:"Tutte le località",
+    results_one:"1 produttore trovato", results_many:"{n} produttori trovati", empty_title:"Nessun risultato", empty_text:"Prova a cambiare i filtri o a cercare con altre parole.",
+    discover:"Scopri l'azienda", demo_badge:"Esempio dimostrativo", premium_badge:"Premium", verified_badge:"Verificato",
+    m_products:"Prodotti", m_experiences:"Esperienze", m_address:"Indirizzo", m_website:"Sito web", m_call:"Chiama", m_whatsapp:"WhatsApp", m_maps:"Apri in Google Maps", m_visit_site:"Visita il sito",
+    m_demo_warning:"Scheda dimostrativa: i dati sono esempi e non descrivono un'azienda reale. Indirizzo e recapiti non sono disponibili.", m_no_contacts:"Recapiti non ancora disponibili.",
+    exp_title:"Esperienze nel territorio", exp_sub:"Idee per vivere il Garda attraverso i suoi sapori.", exp_notice:"Le esperienze qui sotto sono proposte dimostrative: al momento non sono prenotabili.", exp_demo:"Dimostrativa – non prenotabile", exp_cta:"Vedi i produttori correlati",
+    exp1_t:"Degustazioni", exp1_d:"Assaggi guidati di vini, oli e formaggi direttamente presso i produttori.",
+    exp2_t:"Visite presso i produttori", exp2_d:"Scopri come nascono i prodotti, tra cantine, oliveti e caseifici.",
+    exp3_t:"Alla scoperta dell'olio", exp3_d:"Dalla raccolta alla spremitura: un percorso tra gli oliveti del Garda.",
+    exp4_t:"Percorsi gastronomici", exp4_d:"Un itinerario di assaggi tra più produttori, dal salato al dolce.",
+    exp5_t:"Itinerari tra borghi e aziende", exp5_d:"Una giornata tra borghi dell'entroterra e botteghe del gusto.",
+    ai_title:"Che cosa vuoi scoprire oggi?", ai_text:"Raccontaci cosa ti piace e ti aiuteremo a trovare produttori, sapori ed esperienze nell'entroterra gardesano.",
+    ai_q1:"Cerco olio del Garda", ai_q2:"Vorrei scoprire formaggi locali", ai_q3:"Cerco una degustazione", ai_q4:"Organizza un itinerario del gusto",
+    ai_off:"L'assistente AI sarà disponibile dopo la configurazione di MxChat Anywhere.", ai_on:"L'assistente è attivo: apri la chat MxChat. Se la tua domanda non compare da sola, incollala nella chat:", ai_copied:"Domanda copiata negli appunti.", ai_script_err:"Impossibile caricare lo script MxChat. Controlla l'indirizzo in CONFIG.",
+    partner_title:"Sei un produttore locale?", partner_text:"Fai conoscere i tuoi prodotti a chi visita il territorio gardesano. Presenta la tua azienda, racconta le tue specialità e ricevi contatti da nuovi potenziali clienti.", partner_btn:"Diventa partner",
+    form_demo:"Modulo dimostrativo NON operativo: i dati inseriti non vengono inviati né salvati. Il servizio di contatto verrà attivato in una fase successiva.", form_name:"Nome dell'azienda", form_email:"Email", form_msg:"Messaggio", form_send:"Invia (non attivo)", form_nosend:"Modulo dimostrativo: nessun dato è stato inviato.", form_title:"Diventa partner",
+    prem_title:"Due livelli di presenza", prem_sub:"Una proposta commerciale per le aziende del territorio.", plan_base_price:"Gratuito", per_year:"/ anno",
+    base_1:"Profilo essenziale", base_2:"Categoria e località", base_3:"Informazioni principali",
+    prem_1:"Profilo completo", prem_2:"Galleria fotografica", prem_3:"Presentazione dei prodotti", prem_4:"Esperienze", prem_5:"Link di contatto", prem_6:"Maggiore visibilità nelle sezioni pertinenti", prem_7:"Promozioni in evidenza",
+    prem_notice:"Prezzo dimostrativo: si tratta di una proposta commerciale e la sottoscrizione non è attiva in questa prima versione. Non sono previsti pagamenti online.",
+    foot_about:"Progetto dedicato alla scoperta di produttori, specialità ed esperienze gastronomiche dell'entroterra gardesano.", foot_contacts:"Contatti", foot_contacts_none:"Recapiti in fase di configurazione.", foot_producers:"Per i produttori", foot_producers_text:"Vuoi comparire nel catalogo? Scopri i livelli Base e Premium.", foot_producers_link:"Vai ai piani",
+    foot_legal:"Informazioni legali", privacy:"Informativa privacy", cookie:"Cookie policy", foot_demo:"Versione dimostrativa: i dati dei produttori sono esempi.",
+    privacy_body:"<p>Questa è una pagina informativa provvisoria. Il titolare del trattamento e i recapiti non sono ancora stati configurati.</p><p>In questa versione il sito non raccoglie dati personali, non ha moduli operativi e non utilizza servizi di analisi o pubblicità. Eventuali dati inseriti nel modulo dimostrativo non vengono inviati.</p><p>Prima di attivare moduli di contatto, analisi o la chat AI, l'informativa deve essere completata con titolare, finalità, basi giuridiche, destinatari e diritti degli interessati, preferibilmente con il supporto di un professionista.</p>",
+    cookie_body:"<p>Questa versione del sito non imposta cookie propri né utilizza cookie di profilazione o di terze parti. Viene usata unicamente la memoria del browser per ricordare la lingua scelta.</p><p>L'attivazione della chat MxChat o di altri servizi esterni potrebbe introdurre cookie o tecnologie simili: in tal caso questa informativa e un eventuale banner di consenso dovranno essere aggiornati.</p>"
+  },
+  en: {
+    skip:"Skip to content", nav_label:"Main menu", nav_categories:"Categories", nav_producers:"Producers", nav_experiences:"Experiences", nav_ai:"AI Concierge", nav_premium:"For producers",
+    lang_label:"Language", menu_open:"Open menu", menu_close:"Close menu", close:"Close",
+    hero_title:"The most authentic Lake Garda, one flavour at a time.", hero_sub:"Discover local producers, visit farms and wineries, and find the specialities of our land.",
+    hero_cta1:"Discover the producers", hero_cta2:"Ask Garda AI", hero_alt:"Stylised illustration of hills, vineyards and the lake", hero_note:"Demo illustration. Real photographs will be added once usage rights are verified.",
+    cats_title:"What are you looking for?", cats_sub:"Choose a category to see the producers of the area.",
+    cat_wine:"Wine and cellars", cat_oil:"Extra virgin olive oil", cat_cheese:"Cheese", cat_honey:"Honey and hive products", cat_charcuterie:"Cured meats and gastronomic specialities", cat_craft:"Artisan products", cat_experiences:"Tastings and experiences",
+    feat_title:"Featured producers", feat_sub:"A selection from the catalogue.", demo_notice:"The producers shown are sample demo profiles: they do not represent real businesses or verified information.",
+    cat_title:"Producer catalogue", cat_sub:"Search by name, category or place.", filters_label:"Catalogue filters",
+    f_search:"Search", f_search_ph:"Name, product…", f_category:"Category", f_municipality:"Place", f_sort:"Sort", sort_az:"Name A–Z", sort_za:"Name Z–A", f_reset:"Reset filters", all_categories:"All categories", all_municipalities:"All places",
+    results_one:"1 producer found", results_many:"{n} producers found", empty_title:"No results", empty_text:"Try changing the filters or searching with other words.",
+    discover:"Discover the business", demo_badge:"Demo example", premium_badge:"Premium", verified_badge:"Verified",
+    m_products:"Products", m_experiences:"Experiences", m_address:"Address", m_website:"Website", m_call:"Call", m_whatsapp:"WhatsApp", m_maps:"Open in Google Maps", m_visit_site:"Visit website",
+    m_demo_warning:"Demo profile: the data are examples and do not describe a real business. Address and contact details are not available.", m_no_contacts:"Contact details not yet available.",
+    exp_title:"Experiences in the area", exp_sub:"Ideas to enjoy Lake Garda through its flavours.", exp_notice:"The experiences below are demo proposals: they cannot be booked at the moment.", exp_demo:"Demo – not bookable", exp_cta:"See related producers",
+    exp1_t:"Tastings", exp1_d:"Guided tastings of wine, oil and cheese directly at the producers.",
+    exp2_t:"Producer visits", exp2_d:"See how products are made, among cellars, olive groves and dairies.",
+    exp3_t:"Discovering olive oil", exp3_d:"From harvest to pressing: a path through the olive groves of Lake Garda.",
+    exp4_t:"Food trails", exp4_d:"A tasting itinerary across several producers, from savoury to sweet.",
+    exp5_t:"Villages and farms itineraries", exp5_d:"A day among inland villages and flavour workshops.",
+    ai_title:"What would you like to discover today?", ai_text:"Tell us what you like and we will help you find producers, flavours and experiences in the Lake Garda hinterland.",
+    ai_q1:"I'm looking for Garda olive oil", ai_q2:"I'd like to discover local cheeses", ai_q3:"I'm looking for a tasting", ai_q4:"Plan a food itinerary for me",
+    ai_off:"The AI assistant will be available once MxChat Anywhere has been configured.", ai_on:"The assistant is active: open the MxChat chat. If your question does not appear on its own, paste it into the chat:", ai_copied:"Question copied to clipboard.", ai_script_err:"Could not load the MxChat script. Check the address in CONFIG.",
+    partner_title:"Are you a local producer?", partner_text:"Introduce your products to people visiting Lake Garda. Present your business, tell the story of your specialities and receive enquiries from new potential customers.", partner_btn:"Become a partner",
+    form_demo:"Demo form, NOT operational: the data you enter is neither sent nor saved. The contact service will be activated at a later stage.", form_name:"Business name", form_email:"Email", form_msg:"Message", form_send:"Send (inactive)", form_nosend:"Demo form: no data was sent.", form_title:"Become a partner",
+    prem_title:"Two levels of presence", prem_sub:"A commercial proposal for local businesses.", plan_base_price:"Free", per_year:"/ year",
+    base_1:"Essential profile", base_2:"Category and location", base_3:"Main information",
+    prem_1:"Full profile", prem_2:"Photo gallery", prem_3:"Product presentation", prem_4:"Experiences", prem_5:"Contact links", prem_6:"Greater visibility in relevant sections", prem_7:"Featured promotions",
+    prem_notice:"Demo price: this is a commercial proposal and subscriptions are not active in this first version. No online payments are provided.",
+    foot_about:"A project dedicated to discovering producers, specialities and food experiences in the Lake Garda hinterland.", foot_contacts:"Contact", foot_contacts_none:"Contact details being set up.", foot_producers:"For producers", foot_producers_text:"Want to be in the catalogue? Discover the Base and Premium levels.", foot_producers_link:"Go to the plans",
+    foot_legal:"Legal information", privacy:"Privacy notice", cookie:"Cookie policy", foot_demo:"Demo version: producer data are examples.",
+    privacy_body:"<p>This is a provisional information page. The data controller and contact details have not yet been configured.</p><p>This version of the site does not collect personal data, has no operational forms and uses no analytics or advertising services. Anything typed into the demo form is not sent.</p><p>Before enabling contact forms, analytics or the AI chat, the notice must be completed with controller, purposes, legal bases, recipients and data subject rights, preferably with professional support.</p>",
+    cookie_body:"<p>This version of the site sets no cookies of its own and uses no profiling or third-party cookies. Only browser storage is used, to remember the chosen language.</p><p>Enabling the MxChat chat or other external services may introduce cookies or similar technologies: in that case this notice and a consent banner, if needed, must be updated.</p>"
+  },
+  de: {
+    skip:"Zum Inhalt springen", nav_label:"Hauptmenü", nav_categories:"Kategorien", nav_producers:"Erzeuger", nav_experiences:"Erlebnisse", nav_ai:"AI Concierge", nav_premium:"Für Erzeuger",
+    lang_label:"Sprache", menu_open:"Menü öffnen", menu_close:"Menü schließen", close:"Schließen",
+    hero_title:"Der authentischste Gardasee, Geschmack für Geschmack.", hero_sub:"Entdecken Sie lokale Erzeuger, besuchen Sie Betriebe und finden Sie die Spezialitäten unserer Region.",
+    hero_cta1:"Erzeuger entdecken", hero_cta2:"Garda AI fragen", hero_alt:"Stilisierte Illustration von Hügeln, Weinbergen und See", hero_note:"Demo-Illustration. Echte Fotos werden nach Prüfung der Nutzungsrechte ergänzt.",
+    cats_title:"Was suchen Sie?", cats_sub:"Wählen Sie eine Kategorie, um die Erzeuger der Region zu sehen.",
+    cat_wine:"Wein und Weingüter", cat_oil:"Natives Olivenöl extra", cat_cheese:"Käse", cat_honey:"Honig und Bienenprodukte", cat_charcuterie:"Wurstwaren und Spezialitäten", cat_craft:"Handwerkliche Produkte", cat_experiences:"Verkostungen und Erlebnisse",
+    feat_title:"Ausgewählte Erzeuger", feat_sub:"Eine Auswahl aus dem Katalog.", demo_notice:"Die gezeigten Erzeuger sind Demo-Beispielprofile: Sie stellen keine echten Betriebe und keine geprüften Informationen dar.",
+    cat_title:"Erzeugerkatalog", cat_sub:"Suchen Sie nach Name, Kategorie oder Ort.", filters_label:"Katalogfilter",
+    f_search:"Suche", f_search_ph:"Name, Produkt…", f_category:"Kategorie", f_municipality:"Ort", f_sort:"Sortieren", sort_az:"Name A–Z", sort_za:"Name Z–A", f_reset:"Filter zurücksetzen", all_categories:"Alle Kategorien", all_municipalities:"Alle Orte",
+    results_one:"1 Erzeuger gefunden", results_many:"{n} Erzeuger gefunden", empty_title:"Keine Ergebnisse", empty_text:"Ändern Sie die Filter oder suchen Sie mit anderen Begriffen.",
+    discover:"Betrieb entdecken", demo_badge:"Demo-Beispiel", premium_badge:"Premium", verified_badge:"Geprüft",
+    m_products:"Produkte", m_experiences:"Erlebnisse", m_address:"Adresse", m_website:"Webseite", m_call:"Anrufen", m_whatsapp:"WhatsApp", m_maps:"In Google Maps öffnen", m_visit_site:"Webseite besuchen",
+    m_demo_warning:"Demo-Profil: Die Daten sind Beispiele und beschreiben keinen echten Betrieb. Adresse und Kontaktdaten sind nicht verfügbar.", m_no_contacts:"Kontaktdaten noch nicht verfügbar.",
+    exp_title:"Erlebnisse in der Region", exp_sub:"Ideen, den Gardasee über seine Aromen zu erleben.", exp_notice:"Die folgenden Erlebnisse sind Demo-Vorschläge: Sie sind derzeit nicht buchbar.", exp_demo:"Demo – nicht buchbar", exp_cta:"Passende Erzeuger ansehen",
+    exp1_t:"Verkostungen", exp1_d:"Geführte Verkostungen von Wein, Öl und Käse direkt bei den Erzeugern.",
+    exp2_t:"Besuche bei Erzeugern", exp2_d:"Erfahren Sie, wie Produkte entstehen – zwischen Kellereien, Olivenhainen und Käsereien.",
+    exp3_t:"Das Olivenöl entdecken", exp3_d:"Von der Ernte bis zur Pressung: ein Weg durch die Olivenhaine am Gardasee.",
+    exp4_t:"Kulinarische Routen", exp4_d:"Eine Verkostungsroute über mehrere Erzeuger, von herzhaft bis süß.",
+    exp5_t:"Routen durch Dörfer und Betriebe", exp5_d:"Ein Tag zwischen Dörfern im Hinterland und Genusswerkstätten.",
+    ai_title:"Was möchten Sie heute entdecken?", ai_text:"Erzählen Sie uns, was Sie mögen, und wir helfen Ihnen, Erzeuger, Aromen und Erlebnisse im Hinterland des Gardasees zu finden.",
+    ai_q1:"Ich suche Gardasee-Olivenöl", ai_q2:"Ich möchte lokale Käsesorten entdecken", ai_q3:"Ich suche eine Verkostung", ai_q4:"Plane eine kulinarische Route",
+    ai_off:"Der AI-Assistent ist nach der Konfiguration von MxChat Anywhere verfügbar.", ai_on:"Der Assistent ist aktiv: Öffnen Sie den MxChat-Chat. Erscheint Ihre Frage nicht von selbst, fügen Sie sie in den Chat ein:", ai_copied:"Frage in die Zwischenablage kopiert.", ai_script_err:"Das MxChat-Skript konnte nicht geladen werden. Prüfen Sie die Adresse in CONFIG.",
+    partner_title:"Sind Sie ein lokaler Erzeuger?", partner_text:"Machen Sie Ihre Produkte den Besuchern des Gardasees bekannt. Stellen Sie Ihren Betrieb vor, erzählen Sie von Ihren Spezialitäten und erhalten Sie Anfragen neuer Kunden.", partner_btn:"Partner werden",
+    form_demo:"Demo-Formular, NICHT aktiv: Eingaben werden weder gesendet noch gespeichert. Der Kontaktdienst wird später aktiviert.", form_name:"Name des Betriebs", form_email:"E-Mail", form_msg:"Nachricht", form_send:"Senden (inaktiv)", form_nosend:"Demo-Formular: Es wurden keine Daten gesendet.", form_title:"Partner werden",
+    prem_title:"Zwei Präsenzstufen", prem_sub:"Ein kommerzielles Angebot für Betriebe der Region.", plan_base_price:"Kostenlos", per_year:"/ Jahr",
+    base_1:"Basisprofil", base_2:"Kategorie und Ort", base_3:"Wichtigste Informationen",
+    prem_1:"Vollständiges Profil", prem_2:"Fotogalerie", prem_3:"Produktpräsentation", prem_4:"Erlebnisse", prem_5:"Kontaktlinks", prem_6:"Mehr Sichtbarkeit in passenden Bereichen", prem_7:"Hervorgehobene Aktionen",
+    prem_notice:"Demo-Preis: Es handelt sich um ein kommerzielles Angebot; Abonnements sind in dieser ersten Version nicht aktiv. Es gibt keine Online-Zahlungen.",
+    foot_about:"Ein Projekt zur Entdeckung von Erzeugern, Spezialitäten und kulinarischen Erlebnissen im Hinterland des Gardasees.", foot_contacts:"Kontakt", foot_contacts_none:"Kontaktdaten werden eingerichtet.", foot_producers:"Für Erzeuger", foot_producers_text:"Im Katalog erscheinen? Entdecken Sie die Stufen Basis und Premium.", foot_producers_link:"Zu den Angeboten",
+    foot_legal:"Rechtliche Hinweise", privacy:"Datenschutzerklärung", cookie:"Cookie-Richtlinie", foot_demo:"Demo-Version: Die Erzeugerdaten sind Beispiele.",
+    privacy_body:"<p>Dies ist eine vorläufige Informationsseite. Verantwortlicher und Kontaktdaten sind noch nicht konfiguriert.</p><p>Diese Version der Website erhebt keine personenbezogenen Daten, hat keine funktionierenden Formulare und nutzt keine Analyse- oder Werbedienste. Eingaben im Demo-Formular werden nicht gesendet.</p><p>Vor der Aktivierung von Kontaktformularen, Analysen oder des AI-Chats muss die Erklärung um Verantwortlichen, Zwecke, Rechtsgrundlagen, Empfänger und Betroffenenrechte ergänzt werden, vorzugsweise mit fachlicher Unterstützung.</p>",
+    cookie_body:"<p>Diese Version der Website setzt keine eigenen Cookies und verwendet keine Profiling- oder Drittanbieter-Cookies. Es wird nur der Browser-Speicher genutzt, um die gewählte Sprache zu merken.</p><p>Die Aktivierung des MxChat-Chats oder anderer externer Dienste kann Cookies oder ähnliche Technologien einführen: In diesem Fall müssen diese Erklärung und ggf. ein Einwilligungsbanner aktualisiert werden.</p>"
+  }
+};
+
+/* =========================================================
+   CATEGORIE E LOCALITÀ
+   ========================================================= */
+const CATEGORIES = ["wine","oil","cheese","honey","charcuterie","craft","experiences"];
+const MUNICIPALITIES = ["Lazise","Bardolino","Cavaion Veronese","Affi","Caprino Veronese","Bussolengo"];
+
+/* =========================================================
+   DATI DEI PRODUTTORI  ← MODIFICA QUI
+   Tutte le schede sotto sono DIMOSTRATIVE (demo:true).
+   Campi vuoti ("" o []) vengono semplicemente nascosti.
+   - image: URL di una fotografia con diritti verificati; se vuoto viene mostrata un'illustrazione.
+   - premium: true solo se l'azienda ha davvero sottoscritto il piano Premium.
+   - verified: true solo dopo aver controllato i dati con l'azienda.
+   - Per le traduzioni (facoltative) aggiungere: translations:{ en:{shortDescription:"…",description:"…"}, de:{…} }
+   ========================================================= */
+const PRODUCERS = [
+  { id:"demo-01", demo:true, name:"Cantina Esempio Bardolino", category:"wine", municipality:"Bardolino",
+    shortDescription:"Scheda dimostrativa di una cantina di colline moreniche.",
+    description:"Questa è una scheda di esempio, creata per mostrare come apparirà il profilo di una cantina. Descrizione, prodotti ed esperienze non si riferiscono ad alcuna azienda reale.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Vino rosso (esempio)","Vino bianco (esempio)"], experiences:["Degustazione in cantina (esempio)"], premium:true, verified:false },
+  { id:"demo-02", demo:true, name:"Frantoio Esempio Lazise", category:"oil", municipality:"Lazise",
+    shortDescription:"Scheda dimostrativa di un frantoio tra gli oliveti.",
+    description:"Scheda di esempio per un produttore di olio extravergine. Nessun dato qui è reale: serve solo a mostrare la struttura della pagina.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Olio extravergine (esempio)"], experiences:["Visita al frantoio (esempio)"], premium:false, verified:false },
+  { id:"demo-03", demo:true, name:"Caseificio Esempio Caprino", category:"cheese", municipality:"Caprino Veronese",
+    shortDescription:"Scheda dimostrativa di un caseificio dell'entroterra.",
+    description:"Scheda di esempio per un caseificio di montagna. Prodotti ed esperienze sono segnaposto descrittivi e non indicano disponibilità reali.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Formaggio fresco (esempio)","Formaggio stagionato (esempio)"], experiences:[], premium:false, verified:false },
+  { id:"demo-04", demo:true, name:"Apiario Esempio Affi", category:"honey", municipality:"Affi",
+    shortDescription:"Scheda dimostrativa di un apicoltore locale.",
+    description:"Scheda di esempio per un apicoltore. Le informazioni sono inventate a scopo illustrativo e non descrivono un'azienda esistente.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Miele millefiori (esempio)","Propoli (esempio)"], experiences:[], premium:false, verified:false },
+  { id:"demo-05", demo:true, name:"Salumificio Esempio Bussolengo", category:"charcuterie", municipality:"Bussolengo",
+    shortDescription:"Scheda dimostrativa di una bottega di salumi.",
+    description:"Scheda di esempio per un produttore di salumi e specialità gastronomiche. I contenuti sono fittizi.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Salumi tipici (esempio)"], experiences:["Assaggio guidato (esempio)"], premium:false, verified:false },
+  { id:"demo-06", demo:true, name:"Laboratorio Esempio Cavaion", category:"craft", municipality:"Cavaion Veronese",
+    shortDescription:"Scheda dimostrativa di un laboratorio artigianale.",
+    description:"Scheda di esempio per un laboratorio di prodotti artigianali (conserve, dolci, pasta). I dati sono fittizi.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Conserve (esempio)","Pasta artigianale (esempio)"], experiences:[], premium:false, verified:false },
+  { id:"demo-07", demo:true, name:"Esperienze Esempio Garda", category:"experiences", municipality:"Lazise",
+    shortDescription:"Scheda dimostrativa di un organizzatore di degustazioni.",
+    description:"Scheda di esempio per chi propone degustazioni e percorsi del gusto. Le esperienze elencate non sono prenotabili.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:[], experiences:["Percorso del gusto (esempio)","Visita guidata (esempio)"], premium:false, verified:false },
+  { id:"demo-08", demo:true, name:"Oliveto Esempio Cavaion", category:"oil", municipality:"Cavaion Veronese",
+    shortDescription:"Scheda dimostrativa di un piccolo oliveto familiare.",
+    description:"Scheda di esempio per un piccolo produttore di olio. Nessuna informazione corrisponde a un'azienda reale.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Olio extravergine (esempio)"], experiences:[], premium:false, verified:false },
+  { id:"demo-09", demo:true, name:"Tenuta Esempio Affi", category:"wine", municipality:"Affi",
+    shortDescription:"Scheda dimostrativa di una tenuta vitivinicola.",
+    description:"Scheda di esempio per una tenuta con vigneti. Descrizione e prodotti sono segnaposto illustrativi.",
+    image:"", website:"", phone:"", whatsapp:"", address:"",
+    products:["Vino rosso (esempio)"], experiences:["Passeggiata nei vigneti (esempio)"], premium:false, verified:false }
+];
+
+/* =========================================================
+   ESPERIENZE (tutte dimostrative, non prenotabili)
+   ========================================================= */
+const EXPERIENCES = [
+  { id:"exp1", icon:"🍷", t:"exp1_t", d:"exp1_d", category:"wine" },
+  { id:"exp2", icon:"🏡", t:"exp2_t", d:"exp2_d", category:"experiences" },
+  { id:"exp3", icon:"🫒", t:"exp3_t", d:"exp3_d", category:"oil" },
+  { id:"exp4", icon:"🧀", t:"exp4_t", d:"exp4_d", category:"cheese" },
+  { id:"exp5", icon:"🗺️", t:"exp5_t", d:"exp5_d", category:"experiences" }
+];
+
+/* =========================================================
+   ILLUSTRAZIONI SVG (segnaposto grafici, non fotografie)
+   ========================================================= */
+function hex(cx, cy, r){
+  const pts = [];
+  for (let i = 0; i < 6; i++){
+    const a = Math.PI / 3 * i + Math.PI / 6;
+    pts.push((cx + r * Math.cos(a)).toFixed(1) + "," + (cy + r * Math.sin(a)).toFixed(1));
+  }
+  return pts.join(" ");
+}
+
+function art(kind){
+  const C = { olive:"#263D2C", sage:"#87977A", cream:"#F8F0DD", warm:"#FFFDF8", terra:"#B76545" };
+  const bg = {
+    wine:[C.sage,C.olive], oil:[C.cream,C.sage], cheese:[C.cream,C.terra], honey:[C.cream,"#D9A441"],
+    charcuterie:[C.terra,C.olive], craft:[C.cream,C.sage], experiences:[C.sage,C.olive], hero:["#9FB4A0",C.olive]
+  }[kind] || [C.sage, C.olive];
+  let s = "";
+  if (kind === "wine" || kind === "hero"){
+    s += '<circle cx="640" cy="110" r="46" fill="' + C.cream + '" opacity=".9"/>';
+    if (kind === "hero"){
+      s += '<rect y="250" width="800" height="250" fill="#7FA3A8" opacity=".55"/>';
+      for (let i = 0; i < 6; i++) s += '<path d="M' + (40 + i * 120) + ' ' + (290 + i * 14) + ' q40 -10 80 0" stroke="#F8F0DD" stroke-width="3" fill="none" opacity=".5"/>';
+    }
+    s += '<path d="M0 300 Q200 200 400 280 T800 240 V500 H0Z" fill="' + C.sage + '" opacity=".85"/>';
+    s += '<path d="M0 380 Q250 290 500 360 T800 330 V500 H0Z" fill="' + C.olive + '"/>';
+    for (let i = 0; i < 9; i++) s += '<path d="M' + (i * 100 - 20) + ' 500 L' + (260 + i * 60) + ' 360" stroke="' + C.cream + '" stroke-width="2.5" opacity=".45"/>';
+  } else if (kind === "oil"){
+    s += '<path d="M120 440 C300 300 480 220 700 80" stroke="' + C.olive + '" stroke-width="7" fill="none" stroke-linecap="round"/>';
+    [[250,360],[340,310],[430,260],[520,205],[610,150]].forEach(function(p){
+      s += '<ellipse cx="' + p[0] + '" cy="' + (p[1]-28) + '" rx="62" ry="17" transform="rotate(-35 ' + p[0] + ' ' + (p[1]-28) + ')" fill="' + C.olive + '"/>';
+      s += '<ellipse cx="' + (p[0]+14) + '" cy="' + (p[1]+22) + '" rx="56" ry="15" transform="rotate(-30 ' + (p[0]+14) + ' ' + (p[1]+22) + ')" fill="#4E6B55"/>';
+    });
+    [[300,400],[470,310],[590,235]].forEach(function(p){ s += '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx="18" ry="24" fill="' + C.terra + '"/>'; });
+  } else if (kind === "cheese"){
+    s += '<polygon points="120,400 420,250 420,400" fill="#F0C85A"/><polygon points="420,250 700,360 420,400" fill="#E3B03F"/>';
+    [[260,360,18],[340,340,12],[470,350,14],[560,370,10]].forEach(function(c){ s += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + c[2] + '" fill="#C58E2A" opacity=".7"/>'; });
+  } else if (kind === "honey"){
+    for (let r = 0; r < 5; r++) for (let c = 0; c < 8; c++){
+      const x = 80 + c * 95 + (r % 2 ? 47 : 0), y = 70 + r * 82;
+      s += '<polygon points="' + hex(x, y, 46) + '" fill="' + ((r + c) % 3 === 0 ? "#D9A441" : "#F0C85A") + '" stroke="' + C.cream + '" stroke-width="4" opacity=".9"/>';
+    }
+  } else if (kind === "charcuterie"){
+    s += '<rect x="90" y="120" width="620" height="280" rx="40" fill="#8B5E3C"/>';
+    [[220,250,70],[400,230,60],[560,270,62]].forEach(function(c){ s += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + c[2] + '" fill="#A33E3E"/><circle cx="' + c[0] + '" cy="' + c[1] + '" r="' + (c[2]-18) + '" fill="#C45C5C"/>'; });
+  } else if (kind === "craft"){
+    [[160,"#B76545"],[300,"#87977A"],[440,"#D9A441"]].forEach(function(j){ s += '<rect x="' + j[0] + '" y="190" width="110" height="190" rx="18" fill="' + j[1] + '"/><rect x="' + (j[0]+8) + '" y="165" width="94" height="32" rx="8" fill="' + C.olive + '"/><rect x="' + (j[0]+18) + '" y="240" width="74" height="70" rx="8" fill="' + C.cream + '" opacity=".85"/>'; });
+    s += '<path d="M580 380 q80 -170 160 0Z" fill="#8B5E3C"/>';
+  } else {
+    s += '<circle cx="400" cy="130" r="56" fill="' + C.cream + '" opacity=".92"/>';
+    s += '<path d="M0 330 Q400 250 800 330 V500 H0Z" fill="' + C.olive + '"/>';
+    [[200,360],[400,380],[600,360]].forEach(function(p){ s += '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx="70" ry="18" fill="' + C.cream + '"/><rect x="' + (p[0]-3) + '" y="' + (p[1]-60) + '" width="6" height="60" fill="' + C.cream + '"/><ellipse cx="' + p[0] + '" cy="' + (p[1]-72) + '" rx="26" ry="30" fill="' + C.cream + '" opacity=".35" stroke="' + C.cream + '" stroke-width="3"/>'; });
+  }
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + bg[0] + '"/><stop offset="1" stop-color="' + bg[1] + '"/></linearGradient></defs><rect width="800" height="500" fill="url(#g)"/>' + s + '</svg>';
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+
+/* =========================================================
+   FUNZIONI DI SUPPORTO
+   ========================================================= */
+const $ = function(sel, root){ return (root || document).querySelector(sel); };
+const $$ = function(sel, root){ return Array.from((root || document).querySelectorAll(sel)); };
+
+let currentLang = CONFIG.defaultLanguage;
+let lastFocus = null;
+let toastTimer = null;
+
+function t(key, vars){
+  let str = (I18N[currentLang] && I18N[currentLang][key]) || I18N.it[key] || key;
+  if (vars) Object.keys(vars).forEach(function(k){ str = str.replace("{" + k + "}", vars[k]); });
+  return str;
+}
+
+/* Escape HTML per ogni dato inserito nei template */
+function esc(v){
+  return String(v == null ? "" : v).replace(/[&<>"']/g, function(c){
+    return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+  });
+}
+
+/* Accetta solo indirizzi http(s) per i link esterni */
+function safeUrl(u){
+  try { const x = new URL(u); return (x.protocol === "https:" || x.protocol === "http:") ? x.href : ""; }
+  catch (e) { return ""; }
+}
+
+/* Numero di telefono: solo cifre e + */
+function cleanPhone(p){ return String(p || "").replace(/[^\d+]/g, ""); }
+
+/* Campo testuale localizzato con ripiego sulla lingua originale */
+function field(p, name){
+  const tr = p.translations && p.translations[currentLang];
+  return (tr && tr[name]) || p[name] || "";
+}
+
+function catLabel(id){ return t("cat_" + id); }
+
+/* Scorrimento fluido, disattivato se l'utente preferisce meno animazioni */
+function scrollBehavior(){
+  try { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; }
+  catch (e) { return "auto"; }
+}
+
+function showToast(msg, isError){
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.toggle("error", !!isError);
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove("show"); }, 5000);
+}
+
+/* =========================================================
+   TRADUZIONE DELL'INTERFACCIA
+   ========================================================= */
+function applyI18n(){
+  document.documentElement.lang = currentLang;
+  $$("[data-i18n]").forEach(function(el){ el.textContent = t(el.dataset.i18n); });
+  $$("[data-i18n-ph]").forEach(function(el){ el.placeholder = t(el.dataset.i18nPh); });
+  $$("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+  $$("[data-i18n-alt]").forEach(function(el){ el.alt = t(el.dataset.i18nAlt); });
+  $("#menuToggle").setAttribute("aria-label", t($("#mainNav").classList.contains("open") ? "menu_close" : "menu_open"));
+  buildFilterOptions();
+  renderCategories();
+  renderFeatured();
+  renderCatalog();
+  renderExperiences();
+  renderFooterContacts();
+  updateAiStatus();
+}
+
+function setLanguage(lang){
+  if (!I18N[lang]) lang = "it";
+  currentLang = lang;
+  $("#langSelect").value = lang;
+  try { localStorage.setItem("gat_lang", lang); } catch (e) { /* storage non disponibile */ }
+  applyI18n();
+}
+
+/* =========================================================
+   CATEGORIE
+   ========================================================= */
+function renderCategories(){
+  $("#catGrid").innerHTML = CATEGORIES.map(function(c){
+    return '<button type="button" class="cat-card" data-cat="' + esc(c) + '"><img src="' + art(c) + '" alt="" loading="lazy"><span>' + esc(catLabel(c)) + '</span></button>';
+  }).join("");
+}
+
+function selectCategory(cat){
+  $("#fCategory").value = cat;
+  renderCatalog();
+  $("#produttori").scrollIntoView({ behavior: scrollBehavior() });
+}
+
+/* =========================================================
+   CARD E CATALOGO
+   ========================================================= */
+function badgesHtml(p){
+  let h = "";
+  if (p.demo) h += '<span class="badge badge-demo">' + esc(t("demo_badge")) + '</span>';
+  if (p.premium) h += '<span class="badge badge-premium">' + esc(t("premium_badge")) + '</span>';
+  if (p.verified && !p.demo) h += '<span class="badge badge-verified">' + esc(t("verified_badge")) + '</span>';
+  return h ? '<div class="badges">' + h + '</div>' : "";
+}
+
+function cardHtml(p){
+  const img = p.image && safeUrl(p.image) ? safeUrl(p.image) : art(p.category);
+  return '<article class="card">' +
+    '<img class="card-img" src="' + esc(img) + '" alt="' + esc(p.name + " – " + catLabel(p.category)) + '" loading="lazy">' +
+    '<div class="card-body">' + badgesHtml(p) +
+    '<h3>' + esc(p.name) + '</h3>' +
+    '<div class="card-meta">' + esc(p.municipality) + ' · ' + esc(catLabel(p.category)) + '</div>' +
+    '<p>' + esc(field(p, "shortDescription")) + '</p>' +
+    '<button type="button" class="btn btn-secondary btn-sm" data-open="' + esc(p.id) + '">' + esc(t("discover")) + '</button>' +
+    '</div></article>';
+}
+
+function renderFeatured(){
+  /* Prima i Premium configurati, poi gli altri; massimo 3 */
+  const list = PRODUCERS.slice().sort(function(a, b){ return (b.premium ? 1 : 0) - (a.premium ? 1 : 0); }).slice(0, 3);
+  $("#featGrid").innerHTML = list.map(cardHtml).join("");
+}
+
+function buildFilterOptions(){
+  const cat = $("#fCategory"), mun = $("#fMunicipality");
+  const cv = cat.value, mv = mun.value;
+  cat.innerHTML = '<option value="">' + esc(t("all_categories")) + '</option>' + CATEGORIES.map(function(c){ return '<option value="' + c + '">' + esc(catLabel(c)) + '</option>'; }).join("");
+  mun.innerHTML = '<option value="">' + esc(t("all_municipalities")) + '</option>' + MUNICIPALITIES.map(function(m){ return '<option value="' + esc(m) + '">' + esc(m) + '</option>'; }).join("");
+  cat.value = cv; mun.value = mv;
+  const sort = $("#fSort");
+  $$("option", sort).forEach(function(o){ o.textContent = t(o.dataset.i18n); });
+}
+
+function getFiltered(){
+  const q = $("#fSearch").value.trim().toLowerCase();
+  const cat = $("#fCategory").value;
+  const mun = $("#fMunicipality").value;
+  const sort = $("#fSort").value;
+  let list = PRODUCERS.filter(function(p){
+    if (cat){
+      const match = p.category === cat || (cat === "experiences" && p.experiences && p.experiences.length > 0);
+      if (!match) return false;
+    }
+    if (mun && p.municipality !== mun) return false;
+    if (q){
+      const hay = [p.name, p.municipality, catLabel(p.category), field(p, "shortDescription"), field(p, "description")].concat(p.products || [], p.experiences || []).join(" ").toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+  list.sort(function(a, b){ return a.name.localeCompare(b.name, currentLang) * (sort === "za" ? -1 : 1); });
+  return list;
+}
+
+function renderCatalog(){
+  const list = getFiltered();
+  $("#catalogGrid").innerHTML = list.map(cardHtml).join("");
+  $("#emptyState").hidden = list.length > 0;
+  $("#resultCount").textContent = list.length === 0 ? "" : (list.length === 1 ? t("results_one") : t("results_many", { n: list.length }));
+}
+
+function resetFilters(){
+  $("#fSearch").value = "";
+  $("#fCategory").value = "";
+  $("#fMunicipality").value = "";
+  $("#fSort").value = "az";
+  renderCatalog();
+  showToast(t("f_reset"));
+}
+
+/* =========================================================
+   ESPERIENZE
+   ========================================================= */
+function renderExperiences(){
+  $("#expGrid").innerHTML = EXPERIENCES.map(function(e){
+    return '<article class="exp-card"><div class="ico" aria-hidden="true">' + e.icon + '</div>' +
+      '<span class="badge badge-demo" style="align-self:flex-start">' + esc(t("exp_demo")) + '</span>' +
+      '<h3>' + esc(t(e.t)) + '</h3><p>' + esc(t(e.d)) + '</p>' +
+      '<button type="button" class="btn btn-secondary btn-sm" data-exp-cat="' + esc(e.category) + '">' + esc(t("exp_cta")) + '</button></article>';
+  }).join("");
+}
+
+/* =========================================================
+   MODAL ACCESSIBILE
+   ========================================================= */
+function openModal(html){
+  lastFocus = document.activeElement;
+  $("#modalBody").innerHTML = html;
+  const bd = $("#modalBackdrop");
+  bd.classList.add("open");
+  bd.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  $("#modalClose").setAttribute("aria-label", t("close"));
+  $("#modal").focus();
+}
+
+function closeModal(){
+  const bd = $("#modalBackdrop");
+  if (!bd.classList.contains("open")) return;
+  bd.classList.remove("open");
+  bd.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  $("#modalBody").innerHTML = "";
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+/* Trappola del focus dentro il modal */
+function trapFocus(e){
+  if (e.key !== "Tab" || !$("#modalBackdrop").classList.contains("open")) return;
+  const f = $$('#modal button, #modal a[href], #modal input, #modal textarea, #modal select').filter(function(el){ return !el.disabled && el.offsetParent !== null; });
+  if (!f.length) return;
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && (document.activeElement === first || document.activeElement === $("#modal"))){ e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+
+/* Scheda produttore */
+function openProducer(id){
+  const p = PRODUCERS.find(function(x){ return x.id === id; });
+  if (!p) { showToast("Scheda non trovata.", true); return; }
+  const img = p.image && safeUrl(p.image) ? safeUrl(p.image) : art(p.category);
+  let h = '<img class="modal-img" src="' + esc(img) + '" alt="' + esc(p.name) + '">' +
+    '<div class="modal-content">' + badgesHtml(p) +
+    '<h2 id="modalTitle">' + esc(p.name) + '</h2>' +
+    '<p class="card-meta">' + esc(p.municipality) + ' · ' + esc(catLabel(p.category)) + '</p>';
+  if (p.demo) h += '<p class="notice">' + esc(t("m_demo_warning")) + '</p>';
+  h += '<p>' + esc(field(p, "description")) + '</p>';
+  if (p.products && p.products.length) h += '<h3>' + esc(t("m_products")) + '</h3><ul>' + p.products.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join("") + '</ul>';
+  if (p.experiences && p.experiences.length) h += '<h3>' + esc(t("m_experiences")) + '</h3><ul>' + p.experiences.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join("") + '</ul>';
+
+  /* L'indirizzo compare solo se verificato */
+  const showAddress = p.address && p.verified && !p.demo;
+  if (showAddress) h += '<h3>' + esc(t("m_address")) + '</h3><p>' + esc(p.address) + '</p>';
+
+  /* Pulsanti di contatto: solo se il dato esiste */
+  let actions = "";
+  const site = safeUrl(p.website);
+  const tel = cleanPhone(p.phone);
+  const wa = cleanPhone(p.whatsapp).replace(/^\+/, "");
+  if (site) actions += '<a class="btn btn-secondary btn-sm" href="' + esc(site) + '" target="_blank" rel="noopener noreferrer">' + esc(t("m_visit_site")) + '</a>';
+  if (tel) actions += '<a class="btn btn-secondary btn-sm" href="tel:' + esc(tel) + '">' + esc(t("m_call")) + '</a>';
+  if (wa) actions += '<a class="btn btn-secondary btn-sm" href="https://wa.me/' + esc(wa) + '" target="_blank" rel="noopener noreferrer">' + esc(t("m_whatsapp")) + '</a>';
+  if (showAddress) actions += '<a class="btn btn-primary btn-sm" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.address) + '" target="_blank" rel="noopener noreferrer">' + esc(t("m_maps")) + '</a>';
+  h += actions ? '<div class="modal-actions">' + actions + '</div>' : '<p class="card-meta">' + esc(t("m_no_contacts")) + '</p>';
+  h += '</div>';
+  openModal(h);
+}
+
+/* Pagine legali */
+function openLegal(kind){
+  const title = kind === "privacy" ? t("privacy") : t("cookie");
+  const body = kind === "privacy" ? t("privacy_body") : t("cookie_body");
+  openModal('<div class="modal-content" style="padding-top:60px"><h2 id="modalTitle">' + esc(title) + '</h2>' + body + '</div>');
+}
+
+/* =========================================================
+   DIVENTA PARTNER
+   ========================================================= */
+function openPartner(){
+  /* Se l'email è configurata si apre il client di posta; altrimenti modulo dimostrativo non operativo */
+  const mail = (CONFIG.partnerEmail || "").trim();
+  if (mail && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){
+    window.location.href = "mailto:" + mail + "?subject=" + encodeURIComponent(t("form_title") + " – " + CONFIG.siteName);
+    return;
+  }
+  openModal('<div class="modal-content" style="padding-top:60px"><h2 id="modalTitle">' + esc(t("form_title")) + '</h2>' +
+    '<p class="notice">' + esc(t("form_demo")) + '</p>' +
+    '<form id="demoForm" style="margin-top:16px" novalidate>' +
+    '<div class="form-field"><label for="dfName">' + esc(t("form_name")) + '</label><input id="dfName" type="text" autocomplete="organization"></div>' +
+    '<div class="form-field"><label for="dfMail">' + esc(t("form_email")) + '</label><input id="dfMail" type="email" autocomplete="email"></div>' +
+    '<div class="form-field"><label for="dfMsg">' + esc(t("form_msg")) + '</label><textarea id="dfMsg" rows="4"></textarea></div>' +
+    '<button type="submit" class="btn btn-secondary">' + esc(t("form_send")) + '</button></form></div>');
+  $("#demoForm").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    showToast(t("form_nosend"), true);
+  });
+}
+
+/* =========================================================
+   AI CONCIERGE – MXCHAT ANYWHERE
+   Nessuna funzione o attributo MxChat è stato inventato:
+   lo script ufficiale va incollato nel punto indicato nell'HTML
+   (oppure indicato in CONFIG.mxchatScript, se è un file esterno).
+   ========================================================= */
+let mxchatReady = false;
+
+function initMxChat(){
+  if (!CONFIG.mxchatEnabled) { mxchatReady = false; return false; }
+  /* Caso 1: lo snippet ufficiale è già stato incollato nell'HTML. */
+  /* Caso 2: l'amministratore ha indicato un URL di script ufficiale. */
+  const src = safeUrl(CONFIG.mxchatScript);
+  if (CONFIG.mxchatScript && !src){ showToast(t("ai_script_err"), true); mxchatReady = false; return false; }
+  if (src && !document.querySelector('script[data-mxchat-loader]')){
+    const s = document.createElement("script");
+    s.src = src;
+    s.async = true;
+    s.setAttribute("data-mxchat-loader", "1");
+    s.onerror = function(){ showToast(t("ai_script_err"), true); };
+    document.body.appendChild(s);
+  }
+  mxchatReady = true;
+  return true;
+}
+
+function updateAiStatus(){
+  const el = $("#aiStatus");
+  el.textContent = mxchatReady ? t("ai_on") : t("ai_off");
+  if (mxchatReady) el.textContent = t("ai_on").replace(/:$/, ".");
+}
+
+/* Apertura della chat. La documentazione ufficiale di MxChat non è stata verificata
+   in questo progetto: per questo non si richiamano funzioni interne e la domanda
+   suggerita viene soltanto copiata, così l'utente può incollarla nella chat. */
+function openAI(questionKey){
+  if (!mxchatReady){
+    showToast(t("ai_off"), true);
+    $("#concierge").scrollIntoView({ behavior: scrollBehavior() });
+    return;
+  }
+  if (questionKey){
+    const q = t(questionKey);
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(q).then(function(){ showToast(t("ai_copied") + " «" + q + "»"); }, function(){ showToast(t("ai_on") + " «" + q + "»"); });
+    } else {
+      showToast(t("ai_on") + " «" + q + "»");
+    }
+  } else {
+    showToast(t("ai_on").replace(/:$/, "."));
+  }
+}
+
+/* =========================================================
+   FOOTER: CONTATTI E SOCIAL (solo dati configurati)
+   ========================================================= */
+function renderFooterContacts(){
+  let h = "";
+  if (CONFIG.contactEmail && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(CONFIG.contactEmail)) h += '<p><a href="mailto:' + esc(CONFIG.contactEmail) + '">' + esc(CONFIG.contactEmail) + '</a></p>';
+  if (CONFIG.contactPhone && cleanPhone(CONFIG.contactPhone)) h += '<p><a href="tel:' + esc(cleanPhone(CONFIG.contactPhone)) + '">' + esc(CONFIG.contactPhone) + '</a></p>';
+  $("#footContacts").innerHTML = h || '<p>' + esc(t("foot_contacts_none")) + '</p>';
+
+  const links = (CONFIG.social || []).filter(function(s){ return s && s.label && safeUrl(s.url); });
+  $("#socialList").innerHTML = links.map(function(s){
+    return '<li><a href="' + esc(safeUrl(s.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(s.label) + '</a></li>';
+  }).join("");
+}
+
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+function setMenu(open){
+  $("#mainNav").classList.toggle("open", open);
+  $("#menuToggle").setAttribute("aria-expanded", String(open));
+  $("#menuToggle").setAttribute("aria-label", t(open ? "menu_close" : "menu_open"));
+}
+
+/* =========================================================
+   EVENTI
+   ========================================================= */
+function bindEvents(){
+  $("#menuToggle").addEventListener("click", function(){ setMenu(!$("#mainNav").classList.contains("open")); });
+  $$("#mainNav a").forEach(function(a){ a.addEventListener("click", function(){ setMenu(false); }); });
+  $("#langSelect").addEventListener("change", function(e){ setLanguage(e.target.value); });
+
+  /* Ricerca e filtri */
+  ["fSearch","fCategory","fMunicipality","fSort"].forEach(function(id){
+    $("#" + id).addEventListener(id === "fSearch" ? "input" : "change", renderCatalog);
+  });
+  $("#fReset").addEventListener("click", resetFilters);
+  $("#emptyReset").addEventListener("click", resetFilters);
+
+  /* Deleghe: categorie, schede, esperienze, AI, note legali */
+  document.addEventListener("click", function(e){
+    const cat = e.target.closest("[data-cat]");
+    if (cat){ selectCategory(cat.dataset.cat); return; }
+    const open = e.target.closest("[data-open]");
+    if (open){ openProducer(open.dataset.open); return; }
+    const exp = e.target.closest("[data-exp-cat]");
+    if (exp){ selectCategory(exp.dataset.expCat); return; }
+    const aiQ = e.target.closest("[data-ai-q]");
+    if (aiQ){ openAI(aiQ.dataset.aiQ); return; }
+    if (e.target.closest("[data-ai-open]")){ openAI(); return; }
+    const legal = e.target.closest("[data-legal]");
+    if (legal){ openLegal(legal.dataset.legal); return; }
+  });
+
+  $("#partnerBtn").addEventListener("click", openPartner);
+
+  /* Modal: pulsante, sfondo, Escape */
+  $("#modalClose").addEventListener("click", closeModal);
+  $("#modalBackdrop").addEventListener("click", function(e){ if (e.target === e.currentTarget) closeModal(); });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape"){ closeModal(); setMenu(false); }
+    trapFocus(e);
+  });
+}
+
+/* =========================================================
+   AVVIO
+   ========================================================= */
+function init(){
+  try {
+    $("#heroImg").src = art("hero");
+    $("#premPrice").textContent = CONFIG.premiumPrice;
+    $("#year").textContent = "© " + new Date().getFullYear();
+    initMxChat();
+    bindEvents();
+    let lang = CONFIG.defaultLanguage;
+    try { lang = localStorage.getItem("gat_lang") || lang; } catch (e) { /* ignora */ }
+    setLanguage(lang);
+  } catch (err) {
+    console.error(err);
+    showToast("Si è verificato un errore nel caricamento della pagina.", true);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
