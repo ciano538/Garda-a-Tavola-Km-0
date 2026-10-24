@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Garda a Tavola AI – L'AI Concierge dei sapori del Garda</title>
+<meta name="description" content="Scopri vino, olio, formaggi, miele ed esperienze autentiche dell'entroterra gardesano chiedendo al tuo AI Concierge.">
+<meta name="theme-color" content="#263D2C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Garda a Tavola AI">
+<meta property="og:description" content="L'intelligenza artificiale al servizio dei sapori del Garda.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23263D2C'/%3E%3Cpath d='M14 46C16 26 32 14 50 14C50 34 36 48 14 46Z' fill='%2387977A'/%3E%3Cpath d='M14 46C26 36 36 28 46 18' stroke='%23F8F0DD' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+:root{
+  --olive:#263D2C; --sage:#87977A; --cream:#F8F0DD; --warm:#FFFDF8; --terra:#B76545;
+  --olive-80:rgba(38,61,44,.8); --ink:#1d2d21;
+  --radius:22px; --shadow:0 10px 30px rgba(38,61,44,.12); --shadow-s:0 4px 14px rgba(38,61,44,.10);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--warm);color:var(--ink);line-height:1.55;overflow-x:hidden;font-size:17px}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.icon{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:8px}
+
+/* Header */
+header.top{position:absolute;inset:0 0 auto 0;z-index:5;padding:max(14px,env(safe-area-inset-top)) 0 14px;color:var(--cream)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:.95rem;text-decoration:none;text-transform:uppercase}
+.brand .icon{width:30px;height:30px;color:var(--sage);stroke:none;fill:var(--sage)}
+.brand span em{font-style:normal;color:#e6b79f}
+.tools{display:flex;align-items:center;gap:8px}
+.lang{display:flex;background:rgba(255,253,248,.14);border:1px solid rgba(255,253,248,.3);border-radius:999px;padding:3px;backdrop-filter:blur(6px)}
+.lang button{border:0;background:transparent;color:var(--cream);font:600 .8rem var(--sans);letter-spacing:.06em;min-width:44px;min-height:40px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--olive)}
+.info-btn{border:1px solid rgba(255,253,248,.3);background:rgba(255,253,248,.14);color:var(--cream);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}
+
+/* Hero */
+.hero{position:relative;min-height:min(88vh,720px);display:flex;align-items:flex-end;color:var(--cream);background:var(--olive);isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.hero-bg svg{width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(38,61,44,.55) 0%,rgba(38,61,44,.15) 40%,rgba(38,61,44,.82) 100%)}
+.hero .wrap{padding:130px 0 64px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(248,240,221,.16);border:1px solid rgba(248,240,221,.35);padding:8px 14px;border-radius:999px;font-size:.85rem;backdrop-filter:blur(6px);margin-bottom:20px}
+.badge i{width:9px;height:9px;border-radius:50%;background:#9fd18b;box-shadow:0 0 0 0 rgba(159,209,139,.7);animation:pulse 2.4s infinite}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,8vw,4.4rem);line-height:1.06;max-width:15ch;letter-spacing:-.01em}
+.hero p.sub{margin-top:18px;max-width:46ch;font-size:clamp(1.02rem,3.4vw,1.2rem);color:rgba(248,240,221,.92)}
+.btn{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--terra);color:#fff;text-decoration:none;font-weight:600;padding:16px 26px;min-height:56px;border-radius:999px;box-shadow:var(--shadow);transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:#a45638}
+
+/* AI area */
+section{padding:72px 0}
+.ai{background:var(--cream);position:relative;margin-top:-28px;border-radius:32px 32px 0 0;padding-top:64px}
+.ai-card{background:var(--warm);border-radius:30px;box-shadow:var(--shadow);padding:clamp(26px,6vw,56px);text-align:center;border:1px solid rgba(135,151,122,.35);position:relative;overflow:hidden}
+.ai-card::before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(135,151,122,.25),transparent 70%);top:-120px;right:-100px}
+.avatar{position:relative;width:76px;height:76px;margin:0 auto 20px;border-radius:50%;background:var(--olive);display:grid;place-items:center;color:var(--cream)}
+.avatar::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--sage);opacity:.6;animation:ring 3s ease-out infinite}
+.avatar .icon{width:36px;height:36px}
+h2{font-family:var(--serif);font-weight:600;color:var(--olive);font-size:clamp(1.8rem,6vw,2.8rem);line-height:1.15}
+.ai-card p.lead{margin:16px auto 0;max-width:52ch;font-size:1.08rem;color:#3b4d3f}
+.start-hint{margin:30px auto 0;max-width:480px;display:flex;align-items:center;gap:14px;text-align:left;background:var(--olive);color:var(--cream);padding:16px 20px;border-radius:18px}
+.start-hint .icon{width:30px;height:30px;color:#e6b79f}
+.start-hint strong{display:block;font-size:1rem}
+.start-hint span{font-size:.9rem;opacity:.85}
+#mxchat-embed:empty{display:none}
+#mxchat-embed{margin-top:24px}
+
+/* Suggested questions */
+.chips-title{margin:44px 0 18px;text-align:center;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:700}
+.chips{list-style:none;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.chips li{display:flex;align-items:center;gap:14px;background:var(--warm);border:1px solid rgba(135,151,122,.4);border-radius:18px;padding:16px 18px;min-height:64px;box-shadow:var(--shadow-s);font-weight:500;color:var(--olive)}
+.chips li .icon{color:var(--terra);width:1.7em;height:1.7em}
+
+/* Excellences */
+.ex{background:var(--warm)}
+.ex .head{text-align:center;max-width:640px;margin:0 auto 38px}
+.ex .head p{margin-top:12px;color:#4a5b4e}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:260px;color:var(--cream);display:flex;align-items:flex-end;box-shadow:var(--shadow);isolation:isolate;transition:transform .35s}
+.card:hover{transform:translateY(-4px)}
+.card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .6s}
+.card:hover .bg{transform:scale(1.05)}
+.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(38,61,44,0) 25%,rgba(24,40,28,.88) 100%)}
+.card .ico{position:absolute;top:18px;left:18px;width:50px;height:50px;border-radius:50%;background:rgba(248,240,221,.2);backdrop-filter:blur(6px);display:grid;place-items:center;border:1px solid rgba(248,240,221,.4)}
+.card .txt{padding:22px}
+.card h3{font-family:var(--serif);font-size:1.4rem;font-weight:600}
+.card p{font-size:.95rem;opacity:.92;margin-top:4px}
+.c1 .bg{background:linear-gradient(135deg,#6b2f3a,#9a4a52 60%,#B76545)}
+.c2 .bg{background:linear-gradient(135deg,#5f6b2a,#87977A 70%,#c9c58a)}
+.c3 .bg{background:linear-gradient(135deg,#a8793a,#d9b36a 70%,#F8F0DD)}
+.c4 .bg{background:linear-gradient(135deg,#8a5a1f,#d99a2b 70%,#f0cf7d)}
+.c5 .bg{background:linear-gradient(135deg,#263D2C,#4d6650 70%,#87977A)}
+.c6 .bg{background:linear-gradient(135deg,#7b4a34,#B76545 70%,#e0a283)}
+.card .bg svg{position:absolute;inset:0;width:100%;height:100%;opacity:.35}
+.cardhint{text-align:center;margin-top:30px;color:#4a5b4e;font-size:.95rem}
+
+/* Footer */
+footer{background:var(--olive);color:var(--cream);padding:48px 0 calc(48px + env(safe-area-inset-bottom))}
+footer .wrap{display:grid;gap:18px}
+footer .brand{color:var(--cream)}
+footer p{max-width:52ch;opacity:.85;font-size:.95rem}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.92rem}
+footer nav a{opacity:.9;padding:6px 0;min-height:36px}
+footer nav a[hidden]{display:none}
+.copy{font-size:.8rem;opacity:.6}
+
+/* Dialog */
+dialog{border:0;border-radius:24px;padding:30px;max-width:min(480px,92vw);background:var(--warm);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(24,40,28,.6);backdrop-filter:blur(3px)}
+dialog h3{font-family:var(--serif);color:var(--olive);font-size:1.5rem;margin-bottom:10px}
+dialog p{margin-bottom:12px;color:#3b4d3f}
+dialog button{margin-top:8px;border:0;background:var(--olive);color:var(--cream);padding:14px 24px;min-height:48px;border-radius:999px;font:600 1rem var(--sans);cursor:pointer}
+
+/* Animations */
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(159,209,139,0)}100%{box-shadow:0 0 0 0 rgba(159,209,139,0)}}
+@keyframes ring{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+@media (max-width:480px){
+  body{font-size:16.5px}
+  section{padding:56px 0}
+  .brand{font-size:.78rem;letter-spacing:.1em}
+  .brand .icon{width:26px;height:26px}
+  .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Sprite icone -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-leaf" viewBox="0 0 64 64"><path d="M8 50C8 26 26 10 56 10C56 38 38 56 8 50Z"/><path d="M8 50C24 38 38 26 52 14" stroke="#263D2C" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M12 8.2l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/></symbol>
+  <symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 3h10l-.6 7a4.4 4.4 0 0 1-8.8 0z"/><path d="M12 14.5V21M8.5 21h7"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/><path d="M9.5 14a2.6 2.6 0 0 0 2.5 2.5"/></symbol>
+  <symbol id="i-cheese" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v8H3z"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="15.5" r="1.6"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-honey" viewBox="0 0 24 24"><path d="M8 3h8M9 3v3M15 3v3M6 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/><path d="M6 12h12"/></symbol>
+  <symbol id="i-cheers" viewBox="0 0 24 24"><path d="M5 4h6l-.7 6a2.4 2.4 0 0 1-4.6 0zM13 4h6l-.7 6a2.4 2.4 0 0 1-4.6 0z"/><path d="M8 12v8M16 12v8M5.5 20h5M13.5 20h5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.500v.1"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Garda a Tavola AI">
+      <svg class="icon"><use href="#i-leaf"/></svg>
+      <span>Garda a Tavola <em>AI</em></span>
+    </a>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Lingua / Language / Sprache">
+        <button type="button" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" data-lang="de" aria-pressed="false">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="info-btn" id="infoBtn" data-i18n-aria="infoLabel" aria-label="Informazioni sul progetto">
+        <svg class="icon"><use href="#i-info"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg" id="heroBg" aria-hidden="true">
+      <!-- Illustrazione di default: sostituibile con una fotografia da CONFIG.images.hero -->
+      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9c9a0"/><stop offset=".55" stop-color="#F8F0DD"/><stop offset="1" stop-color="#cfd8c0"/></linearGradient>
+          <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9db8b0"/><stop offset="1" stop-color="#6f948f"/></linearGradient>
+        </defs>
+        <rect width="1200" height="800" fill="url(#sky)"/>
+        <circle cx="880" cy="230" r="70" fill="#f6d9a4" opacity=".9"/>
+        <path d="M0 400 L180 300 L330 380 L520 270 L700 370 L900 290 L1200 400 V520 H0Z" fill="#9aa88f" opacity=".7"/>
+        <path d="M0 470 Q300 400 600 460 T1200 450 V560 H0Z" fill="url(#lake)"/>
+        <path d="M0 540 Q300 470 620 530 T1200 520 V800 H0Z" fill="#87977A"/>
+        <path d="M0 620 Q350 540 700 610 T1200 590 V800 H0Z" fill="#5f7a5e"/>
+        <g stroke="#3d5a40" stroke-width="5" fill="none" opacity=".55">
+          <path d="M-20 700 Q300 620 620 660 T1220 640"/><path d="M-20 730 Q300 650 620 690 T1220 670"/>
+          <path d="M-20 760 Q300 680 620 720 T1220 700"/><path d="M-20 790 Q300 710 620 750 T1220 730"/>
+        </g>
+        <g fill="#263D2C"><rect x="170" y="560" width="10" height="60"/><ellipse cx="175" cy="545" rx="48" ry="34" fill="#6f8665"/><ellipse cx="160" cy="552" rx="30" ry="20" fill="#87977A"/></g>
+        <g><rect x="980" y="580" width="10" height="55" fill="#263D2C"/><ellipse cx="985" cy="565" rx="42" ry="30" fill="#6f8665"/></g>
+      </svg>
+    </div>
+    <div class="wrap">
+      <div class="badge"><i></i><span data-i18n="badge">AI Concierge sempre disponibile</span></div>
+      <h1 data-i18n="heroTitle">Scopri il Garda attraverso i suoi sapori.</h1>
+      <p class="sub" data-i18n="heroSub">Produttori locali, vino, olio, specialità gastronomiche ed esperienze autentiche. Chiedi al tuo AI Concierge.</p>
+      <a class="btn" href="#ai-agent"><span data-i18n="cta">Inizia la conversazione</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+
+  <!-- AREA AI AGENT -->
+  <section class="ai" id="ai-agent" aria-labelledby="aiTitle">
+    <div class="wrap">
+      <div class="ai-card reveal">
+        <div class="avatar" aria-hidden="true"><svg class="icon"><use href="#i-chat"/></svg></div>
+        <h2 id="aiTitle" data-i18n="aiTitle">Che cosa vuoi scoprire oggi?</h2>
+        <p class="lead" data-i18n="aiText">Sono il tuo AI Concierge del gusto gardesano. Dimmi cosa cerchi e ti aiuterò a scoprire le possibilità del territorio.</p>
+        <div class="start-hint">
+          <svg class="icon"><use href="#i-chat"/></svg>
+          <div><strong data-i18n="hintTitle">Tocca il pulsante della chat</strong><span data-i18n="hintText">Aprilo e scrivi la tua domanda: nessuna registrazione richiesta.</span></div>
+        </div>
+
+        <!-- ================================================================
+             INSERIRE QUI IL CODICE UFFICIALE DI MXCHAT ANYWHERE
+             (se la tua installazione supporta ufficialmente la visualizzazione
+             incorporata, incollalo dentro il contenitore qui sotto; se il widget
+             è flottante, incollalo prima di </body> come indicato nel README)
+             ================================================================ -->
+        <div id="mxchat-embed"></div>
+      </div>
+
+      <h3 class="chips-title" data-i18n="chipsTitle">Prova a chiedere…</h3>
+      <ul class="chips reveal">
+        <li><svg class="icon"><use href="#i-wine"/></svg><span data-i18n="q1">Vorrei scoprire i vini locali.</span></li>
+        <li><svg class="icon"><use href="#i-drop"/></svg><span data-i18n="q2">Dove posso acquistare olio del Garda?</span></li>
+        <li><svg class="icon"><use href="#i-cheers"/></svg><span data-i18n="q3">Cerco degustazioni ed esperienze.</span></li>
+        <li><svg class="icon"><use href="#i-route"/></svg><span data-i18n="q4">Organizza un itinerario gastronomico.</span></li>
+        <li><svg class="icon"><use href="#i-bag"/></svg><span data-i18n="q5">Quali prodotti tipici posso portare a casa?</span></li>
+        <li><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="q6">Cerco produttori vicino a dove soggiorno.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ECCELLENZE -->
+  <section class="ex" aria-labelledby="exTitle">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2 id="exTitle" data-i18n="exTitle">Argomenti da esplorare</h2>
+        <p data-i18n="exSub">Spunti per iniziare: chiedi al tuo AI Concierge di approfondirli.</p>
+      </div>
+      <div class="grid">
+        <article class="card c1 reveal" data-card="wine"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-wine"/></svg></div><div class="txt"><h3 data-i18n="c1">Vino e cantine</h3><p data-i18n="c1d">Colline, vigneti e calici da scoprire.</p></div></article>
+        <article class="card c2 reveal" data-card="oil"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-drop"/></svg></div><div class="txt"><h3 data-i18n="c2">Olio extravergine</h3><p data-i18n="c2d">Il profumo degli oliveti del lago.</p></div></article>
+        <article class="card c3 reveal" data-card="cheese"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-cheese"/></svg></div><div class="txt"><h3 data-i18n="c3">Formaggi e specialità</h3><p data-i18n="c3d">Sapori di malga e di tradizione.</p></div></article>
+        <article class="card c4 reveal" data-card="honey"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-honey"/></svg></div><div class="txt"><h3 data-i18n="c4">Miele e prodotti artigianali</h3><p data-i18n="c4d">Piccole produzioni, grande carattere.</p></div></article>
+        <article class="card c5 reveal" data-card="tasting"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-cheers"/></svg></div><div class="txt"><h3 data-i18n="c5">Degustazioni ed esperienze</h3><p data-i18n="c5d">Vivi il territorio con tutti i sensi.</p></div></article>
+        <article class="card c6 reveal" data-card="routes"><div class="bg"></div><div class="ico"><svg class="icon"><use href="#i-route"/></svg></div><div class="txt"><h3 data-i18n="c6">Borghi e itinerari del gusto</h3><p data-i18n="c6d">Percorsi tra paesi, strade e tavole.</p></div></article>
+      </div>
+      <p class="cardhint" data-i18n="cardHint">Per saperne di più, scrivi la tua domanda nella chat dell'AI Concierge.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><svg class="icon"><use href="#i-leaf"/></svg><span>Garda a Tavola <em>AI</em></span></div>
+    <p data-i18n="footDesc">L'intelligenza artificiale al servizio dei sapori del Garda.</p>
+    <nav aria-label="Link">
+      <a id="lnkPrivacy" href="#" hidden data-i18n="privacy">Privacy</a>
+      <a id="lnkLegal" href="#" hidden data-i18n="legal">Informazioni legali</a>
+      <a id="lnkContact" href="#" hidden data-i18n="contact">Contatti</a>
+    </nav>
+    <div class="copy">© <span id="year"></span> Garda a Tavola AI</div>
+  </div>
+</footer>
+
+<dialog id="infoDialog" aria-labelledby="infoTitle">
+  <h3 id="infoTitle" data-i18n="infoTitle">Il progetto</h3>
+  <p data-i18n="infoP1">Garda a Tavola AI è un assistente conversazionale dedicato ai prodotti tipici, ai produttori e alle esperienze gastronomiche dell'entroterra gardesano.</p>
+  <p data-i18n="infoP2">Le risposte sono generate da un'intelligenza artificiale e possono contenere imprecisioni: verifica sempre orari e disponibilità direttamente con i produttori.</p>
+  <button type="button" id="infoClose" data-i18n="close">Chiudi</button>
+</dialog>
+
+<noscript><div style="padding:16px;text-align:center;background:#F8F0DD">Per usare l'assistente è necessario attivare JavaScript.</div></noscript>
+
+<!-- Qui, prima di </body>, incolla il codice ufficiale MxChat Anywhere se è un widget flottante (vedi README). -->
+
+<script>
+/* ===========================================================
+   CONFIGURAZIONE (modifica solo questi valori)
+   =========================================================== */
+const CONFIG = {
+  // Link del footer: lascia stringa vuota "" per nasconderli.
+  privacyUrl: "",
+  legalUrl: "",
+  contactUrl: "",          // es. "mailto:info@tuodominio.it" (solo se fornito)
+  // Fotografie opzionali (URL o percorso file, es. "img/hero.jpg"). Vuoto = illustrazione di default.
+  images: {
+    hero: "",
+    cards: { wine:"", oil:"", cheese:"", honey:"", tasting:"", routes:"" }
+  }
+};
+
+/* ===========================================================
+   TESTI STATICI (IT / DE / EN)
+   =========================================================== */
+const I18N = {
+  it:{
+    pageTitle:"Garda a Tavola AI – L'AI Concierge dei sapori del Garda",
+    pageDesc:"Scopri vino, olio, formaggi, miele ed esperienze autentiche dell'entroterra gardesano chiedendo al tuo AI Concierge.",
+    badge:"AI Concierge sempre disponibile",
+    heroTitle:"Scopri il Garda attraverso i suoi sapori.",
+    heroSub:"Produttori locali, vino, olio, specialità gastronomiche ed esperienze autentiche. Chiedi al tuo AI Concierge.",
+    cta:"Inizia la conversazione",
+    aiTitle:"Che cosa vuoi scoprire oggi?",
+    aiText:"Sono il tuo AI Concierge del gusto gardesano. Dimmi cosa cerchi e ti aiuterò a scoprire le possibilità del territorio.",
+    hintTitle:"Tocca il pulsante della chat",
+    hintText:"Aprilo e scrivi la tua domanda: nessuna registrazione richiesta.",
+    chipsTitle:"Prova a chiedere…",
+    q1:"Vorrei scoprire i vini locali.", q2:"Dove posso acquistare olio del Garda?",
+    q3:"Cerco degustazioni ed esperienze.", q4:"Organizza un itinerario gastronomico.",
+    q5:"Quali prodotti tipici posso portare a casa?", q6:"Cerco produttori vicino a dove soggiorno.",
+    exTitle:"Argomenti da esplorare", exSub:"Spunti per iniziare: chiedi al tuo AI Concierge di approfondirli.",
+    c1:"Vino e cantine", c1d:"Colline, vigneti e calici da scoprire.",
+    c2:"Olio extravergine", c2d:"Il profumo degli oliveti del lago.",
+    c3:"Formaggi e specialità", c3d:"Sapori di malga e di tradizione.",
+    c4:"Miele e prodotti artigianali", c4d:"Piccole produzioni, grande carattere.",
+    c5:"Degustazioni ed esperienze", c5d:"Vivi il territorio con tutti i sensi.",
+    c6:"Borghi e itinerari del gusto", c6d:"Percorsi tra paesi, strade e tavole.",
+    cardHint:"Per saperne di più, scrivi la tua domanda nella chat dell'AI Concierge.",
+    footDesc:"L'intelligenza artificiale al servizio dei sapori del Garda.",
+    privacy:"Privacy", legal:"Informazioni legali", contact:"Contatti",
+    infoTitle:"Il progetto",
+    infoP1:"Garda a Tavola AI è un assistente conversazionale dedicato ai prodotti tipici, ai produttori e alle esperienze gastronomiche dell'entroterra gardesano.",
+    infoP2:"Le risposte sono generate da un'intelligenza artificiale e possono contenere imprecisioni: verifica sempre orari e disponibilità direttamente con i produttori.",
+    close:"Chiudi", infoLabel:"Informazioni sul progetto"
+  },
+  de:{
+    pageTitle:"Garda a Tavola AI – Der KI-Concierge für die Aromen des Gardasees",
+    pageDesc:"Entdecke Wein, Olivenöl, Käse, Honig und authentische Erlebnisse im Hinterland des Gardasees – frag deinen KI-Concierge.",
+    badge:"KI-Concierge jederzeit verfügbar",
+    heroTitle:"Entdecke den Gardasee durch seine Aromen.",
+    heroSub:"Lokale Erzeuger, Wein, Olivenöl, kulinarische Spezialitäten und authentische Erlebnisse. Frag deinen KI-Concierge.",
+    cta:"Gespräch beginnen",
+    aiTitle:"Was möchtest du heute entdecken?",
+    aiText:"Ich bin dein KI-Concierge für den Geschmack des Gardasees. Sag mir, was du suchst, und ich zeige dir die Möglichkeiten der Region.",
+    hintTitle:"Tippe auf die Chat-Schaltfläche",
+    hintText:"Öffne sie und stelle deine Frage – keine Registrierung nötig.",
+    chipsTitle:"Frag zum Beispiel …",
+    q1:"Ich möchte lokale Weine entdecken.", q2:"Wo kann ich Olivenöl vom Gardasee kaufen?",
+    q3:"Ich suche Verkostungen und Erlebnisse.", q4:"Plane eine kulinarische Route für mich.",
+    q5:"Welche typischen Produkte kann ich mit nach Hause nehmen?", q6:"Ich suche Erzeuger in der Nähe meiner Unterkunft.",
+    exTitle:"Themen zum Entdecken", exSub:"Anregungen für den Start: Bitte deinen KI-Concierge, sie zu vertiefen.",
+    c1:"Wein und Weingüter", c1d:"Hügel, Weinberge und Gläser zum Entdecken.",
+    c2:"Natives Olivenöl extra", c2d:"Der Duft der Olivenhaine am See.",
+    c3:"Käse und Spezialitäten", c3d:"Aromen von der Alm und aus der Tradition.",
+    c4:"Honig und Handwerksprodukte", c4d:"Kleine Produktionen, großer Charakter.",
+    c5:"Verkostungen und Erlebnisse", c5d:"Die Region mit allen Sinnen erleben.",
+    c6:"Dörfer und Genussrouten", c6d:"Wege zwischen Orten, Straßen und Tischen.",
+    cardHint:"Mehr erfährst du, wenn du deine Frage im Chat des KI-Concierge stellst.",
+    footDesc:"Künstliche Intelligenz im Dienst der Aromen des Gardasees.",
+    privacy:"Datenschutz", legal:"Rechtliche Hinweise", contact:"Kontakt",
+    infoTitle:"Das Projekt",
+    infoP1:"Garda a Tavola AI ist ein Chat-Assistent für typische Produkte, Erzeuger und kulinarische Erlebnisse im Hinterland des Gardasees.",
+    infoP2:"Die Antworten werden von einer künstlichen Intelligenz erzeugt und können Ungenauigkeiten enthalten: Bitte prüfe Öffnungszeiten und Verfügbarkeit immer direkt bei den Erzeugern.",
+    close:"Schließen", infoLabel:"Informationen zum Projekt"
+  },
+  en:{
+    pageTitle:"Garda a Tavola AI – Your AI Concierge for the flavours of Lake Garda",
+    pageDesc:"Discover wine, olive oil, cheese, honey and authentic experiences in the Lake Garda hinterland by asking your AI Concierge.",
+    badge:"AI Concierge always available",
+    heroTitle:"Discover Lake Garda through its flavours.",
+    heroSub:"Local producers, wine, olive oil, gastronomic specialities and authentic experiences. Ask your AI Concierge.",
+    cta:"Start the conversation",
+    aiTitle:"What would you like to discover today?",
+    aiText:"I'm your AI Concierge for the tastes of Lake Garda. Tell me what you're looking for and I'll help you discover what the area has to offer.",
+    hintTitle:"Tap the chat button",
+    hintText:"Open it and type your question – no sign-up required.",
+    chipsTitle:"Try asking…",
+    q1:"I'd like to discover local wines.", q2:"Where can I buy Garda olive oil?",
+    q3:"I'm looking for tastings and experiences.", q4:"Plan a food itinerary for me.",
+    q5:"Which typical products can I take home?", q6:"I'm looking for producers near where I'm staying.",
+    exTitle:"Topics to explore", exSub:"Ideas to get started: ask your AI Concierge to tell you more.",
+    c1:"Wine and wineries", c1d:"Hills, vineyards and glasses to discover.",
+    c2:"Extra virgin olive oil", c2d:"The scent of the lakeside olive groves.",
+    c3:"Cheese and specialities", c3d:"Flavours of the alpine pastures and tradition.",
+    c4:"Honey and artisan products", c4d:"Small productions, big character.",
+    c5:"Tastings and experiences", c5d:"Experience the land with all your senses.",
+    c6:"Villages and food trails", c6d:"Routes through towns, roads and tables.",
+    cardHint:"To learn more, type your question in the AI Concierge chat.",
+    footDesc:"Artificial intelligence at the service of Lake Garda's flavours.",
+    privacy:"Privacy", legal:"Legal information", contact:"Contact",
+    infoTitle:"About the project",
+    infoP1:"Garda a Tavola AI is a conversational assistant dedicated to typical products, producers and gastronomic experiences of the Lake Garda hinterland.",
+    infoP2:"Answers are generated by artificial intelligence and may contain inaccuracies: always check opening hours and availability directly with producers.",
+    close:"Close", infoLabel:"About the project"
+  }
+};
+
+(function(){
+  "use strict";
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  function safeGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function safeSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+  function setLang(lang){
+    if(!I18N[lang]) lang = "it";
+    var t = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = t.pageTitle;
+    var md = $('meta[name="description"]'); if(md) md.setAttribute("content", t.pageDesc);
+    var ogt = $('meta[property="og:title"]'); if(ogt) ogt.setAttribute("content", t.pageTitle);
+    var ogd = $('meta[property="og:description"]'); if(ogd) ogd.setAttribute("content", t.pageDesc);
+    $$("[data-i18n]").forEach(function(el){ var k=el.getAttribute("data-i18n"); if(t[k]!==undefined) el.textContent=t[k]; });
+    $$("[data-i18n-aria]").forEach(function(el){ var k=el.getAttribute("data-i18n-aria"); if(t[k]!==undefined) el.setAttribute("aria-label",t[k]); });
+    $$(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-lang")===lang ? "true":"false"); });
+    safeSet("gat-lang", lang);
+  }
+
+  $$(".lang button").forEach(function(b){
+    b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); });
+  });
+
+  // Lingua iniziale: scelta salvata, altrimenti lingua del browser, altrimenti italiano
+  var saved = safeGet("gat-lang");
+  var nav = (navigator.language || "it").slice(0,2).toLowerCase();
+  setLang(saved || (I18N[nav] ? nav : "it"));
+
+  // Link footer configurabili
+  [["lnkPrivacy",CONFIG.privacyUrl],["lnkLegal",CONFIG.legalUrl],["lnkContact",CONFIG.contactUrl]].forEach(function(p){
+    var a = document.getElementById(p[0]);
+    if(a && p[1]){ a.href = p[1]; a.hidden = false; }
+  });
+
+  // Fotografie opzionali
+  function applyPhoto(el, url){ if(el && url){ el.style.backgroundImage = 'url("'+url+'")'; } }
+  if(CONFIG.images.hero){
+    var hb = document.getElementById("heroBg");
+    applyPhoto(hb, CONFIG.images.hero);
+    var svg = $("svg", hb); if(svg) svg.style.display = "none";
+  }
+  $$(".card[data-card]").forEach(function(c){
+    applyPhoto($(".bg", c), CONFIG.images.cards[c.getAttribute("data-card")]);
+    if(CONFIG.images.cards[c.getAttribute("data-card")]){ var s=$(".bg svg", c); if(s) s.style.display="none"; }
+  });
+
+  // Dialog informazioni
+  var dlg = document.getElementById("infoDialog");
+  document.getElementById("infoBtn").addEventListener("click", function(){
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  });
+  document.getElementById("infoClose").addEventListener("click", function(){
+    if(dlg.close) dlg.close(); else dlg.removeAttribute("open");
+  });
+  dlg.addEventListener("click", function(e){ if(e.target===dlg && dlg.close) dlg.close(); });
+
+  // Anno footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Comparsa morbida
+  var items = $$(".reveal");
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.12});
+    items.forEach(function(el){ io.observe(el); });
+  } else { items.forEach(function(el){ el.classList.add("in"); }); }
+})();
+</script>
+</body>
+</html>
